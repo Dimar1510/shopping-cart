@@ -9,3 +9,25 @@ header {
 .header_main > a {
     color: black;
 }
+
+.cart-icon {
+    position: relative;
+}
+
+.cart-badge {
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    border: 1px solid black;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    z-index: 2;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}

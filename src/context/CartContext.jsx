@@ -19,7 +19,6 @@ export function CartProvider( {children} ) {
     }
 
     function incrementItem(id) {
-        console.log('inc')
         setCart(current => {
             if (current.find(item => item.id === id) == null) {
                 return [...current, {id, quantity: 1}]

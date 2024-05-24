@@ -23,7 +23,8 @@ body {
 }
 
 #root {
-  max-width: 1200px;
+  width: clamp(300px, 70%, 1200px);
+  min-height: 100vh;
   background-color: white;
 }
 
