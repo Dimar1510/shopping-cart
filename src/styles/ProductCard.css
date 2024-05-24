@@ -1,0 +1,104 @@
+.product-card {
+    width: fit-content;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    transition: 0.2s ease-in scale;
+    background-color: var(--clr-white);
+    margin: 1rem;
+}
+
+.product-card:hover {
+     box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.2); 
+}
+
+.product-name {
+    font-size: 1.2rem;
+}
+
+.image-wrapper {
+    width: 250px;
+    height: 300px;
+    display: flex;
+}
+
+.card-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card-footer {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 0.5rem;
+}
+
+.price-wrapper {
+    grid-column: 1/2;
+}
+
+.product-price {
+    font-size: 1.2rem;
+    margin-top: 0.25rem;
+}
+
+.card-button {
+    width: 100%;
+    align-self: center;
+    grid-column: 2/3;
+}
+
+.counter-group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    gap: 0.5rem;
+}
+
+.btn-to-cart, .btn-change-count {
+    height: 30px;
+    border-radius: 20px;
+    border: none;
+    background: none;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+ 
+    cursor: pointer;
+}
+
+.btn-to-cart {
+    width: 100%;
+    border: 1px solid black;
+}
+
+.btn-change-count {
+    width: 30px;
+}
+
+.input-count {
+    width: 40px;
+    text-align: center;
+    padding: 0.25rem;
+    border-radius: 40px;
+    outline: none;
+    border: 1px solid black;
+
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type=number] {
+    appearance: none;
+    -moz-appearance: textfield;
+  }

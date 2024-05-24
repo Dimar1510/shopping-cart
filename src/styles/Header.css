@@ -1,0 +1,11 @@
+header {
+    display: flex;
+    align-items: center;
+    padding: 2rem 4rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.header_main > a {
+    color: black;
+}
