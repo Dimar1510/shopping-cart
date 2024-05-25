@@ -3,7 +3,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { useEffect, useState } from 'react';
+
 import SwapVertOutlinedIcon from '@mui/icons-material/SwapVertOutlined';
 
 export default function SortSelect({sort, setSort, handleAscend}) {
@@ -17,7 +17,7 @@ export default function SortSelect({sort, setSort, handleAscend}) {
         <div className="sort-select">
             <Box sx={{ maxWidth: 120 }}>
             <FormControl fullWidth>
-                <InputLabel id="select-label">Sort</InputLabel>
+                <InputLabel id="select-label" style={{color:'black'}}>Sort</InputLabel>
                 <Select
                 labelId="select-label"
                 id="sort"

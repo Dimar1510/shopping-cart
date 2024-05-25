@@ -1,6 +1,7 @@
 import { useCart } from "../context/CartContext";
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 
 function ItemCounter({id}) {
     const {setItem, getItemCount, incrementItem, decrementItem, deleteItem} = useCart()
@@ -13,7 +14,10 @@ function ItemCounter({id}) {
                     decrementItem(id)
                 }}
             >
-                <RemoveOutlinedIcon/>
+                {quantity > 1 
+                    ? <RemoveOutlinedIcon/>
+                    : <DeleteOutlineOutlinedIcon/>
+                }
             </button>
             <input 
                 type="number" 

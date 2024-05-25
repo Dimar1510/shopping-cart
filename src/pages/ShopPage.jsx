@@ -5,8 +5,9 @@ import banner from '../assets/images/shop_banner.jpg'
 import "../styles/ProductsGrid.css"
 import "../styles/ShopPage.css"
 import SortSelect from "../components/SortSelect";
-import Filter from "../components/Filter";
+
 import FilterAltOffOutlinedIcon from '@mui/icons-material/FilterAltOffOutlined';
+import SearchField from "../components/SearchField";
 
 function ShopPage() {
     const [allProducts, setAllProducts] = useState([])
@@ -15,13 +16,13 @@ function ShopPage() {
     
     const [sort, setSort] = useState('default');
     const [ascend, setAscend] = useState(true)
-    const [filter, setFilter] = useState([]);
+    const [search, setSearch] = useState('')
 
     useEffect(()=> {
         if (data) {
             setAllProducts(data)
             setProducts(allProducts)
-            // console.log(data)
+            console.log(data)
         }
     }, [data])
 
@@ -29,40 +30,48 @@ function ShopPage() {
         handleSort()
     },[sort, ascend])
 
+    useEffect(()=>{
+        handleSearch()
+    },[search])
+
     function handleSort() {
         const newProducts = [...products]
         if (sort === 'default') {
-            setProducts(newProducts.sort((a,b) => 
+            
+            newProducts.sort((a,b) => 
                 a.id > b.id ? (ascend ? 1 : -1) : (ascend ? -1 : 1)
-            ))
+            )
         }
         if (sort === 'price_low') {
-            setProducts(newProducts.sort((a,b) => 
+            newProducts.sort((a,b) => 
                 a.price > b.price ? (ascend ? 1 : -1) : (ascend ? -1 : 1)
-            ))
+            )
         }
         if (sort === 'roast_low') {
-            setProducts(newProducts.sort((a,b) => 
+            newProducts.sort((a,b) => 
                 a.roast_level > b.roast_level ? (ascend ? 1 : -1) : (ascend ? -1 : 1)
-            ))
+            )
         }
-
+        setProducts(newProducts)
+        setAllProducts(newProducts)
     }
 
     function handleAscend() {
         setAscend(!ascend)
     }
 
-    function handleResetFilters() {
-        setAscend(true)
-        setFilter([])
-        setSort('default')
+    function handleSearch() {
+        setProducts(allProducts.filter(item=> 
+            item.name.toLowerCase().includes(search) 
+        ))
     }
 
+    function handleResetFilters() {
+        setAscend(true)
+        setSort('default')
+        setSearch('')
+    }
 
-    if (error) return <p>Api error, check back later</p>
-    if (loading) return <p>There will be a loading page here</p>
-    
     return (  
         <>
             <div className="shop page">
@@ -71,41 +80,44 @@ function ShopPage() {
                         <img src={banner} alt="banner" className="banner-img"/>
                     </div>
                     <div className="banner-text">
-                        <h2 className="banner-title">All coffee</h2>
+                        <h2 className="banner-title">All coffee products</h2>
                         <p className="banner-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem dolore doloremque iste assumenda asperiores, facilis qui laborum natus delectus debitis, esse temporibus voluptate facere odio, praesentium accusamus reiciendis repudiandae maiores.</p>
                     </div>
                 </section>
-                <div className="filters-wrapper">
-                    <div className="filters-selectors">
-                        <SortSelect 
-                            products={products} 
-                            setProducts={setProducts} 
-                            allProducts={allProducts}
-                            handleAscend={handleAscend}
-                            sort={sort}
-                            setSort={setSort}
-                            ascend={ascend}
-                        />
-                        <Filter 
-                            products={products} 
-                            setProducts={setProducts} 
-                            allProducts={allProducts}
-                            filter={filter}
-                            setFilter={setFilter}
-                            setSort={setSort}
-                            sort={sort}
-                        />
-                    </div>
-                    <div className="products-shown">
-                        Products shown: {products.length} / {allProducts.length}
-                        <button
-                            className="btn-filter"
-                            onClick={handleResetFilters}
-                        ><FilterAltOffOutlinedIcon/>Reset filters</button>
-                    </div>
-                    
-                </div>
-                <ProductsGrid products={products}/>
+                {error && 
+                    <p>Api error, check back later</p>
+                }
+                {loading
+                ? 
+                    <p>Loading</p>
+                : 
+                    <>
+                        <div className="filters-wrapper">
+                            <div className="filters-selectors">
+                                <SortSelect 
+                                    handleAscend={handleAscend}
+                                    sort={sort}
+                                    setSort={setSort}
+                                />
+
+                                <SearchField 
+                                    setSearch={setSearch}
+                                    search={search}
+                                />
+                            </div>
+                            <div className="products-shown">
+                                Products shown: {products.length} / {allProducts.length}
+                                <button
+                                    className="btn-filter"
+                                    onClick={handleResetFilters}
+                                ><FilterAltOffOutlinedIcon/>Reset filters</button>
+                            </div>
+                            
+                        </div>
+
+                        <ProductsGrid products={products}/>                        
+                    </>
+                }
             </div>
         </>
     );

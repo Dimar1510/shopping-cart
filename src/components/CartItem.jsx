@@ -1,5 +1,6 @@
 import ItemCounter from "./ItemCounter";
 import "../styles/CartItem.css"
+import { Link } from "react-router-dom";
 
 function CartItem({ id, quantity, products, deleteItem }) {
 
@@ -8,7 +9,15 @@ function CartItem({ id, quantity, products, deleteItem }) {
     const totalPrice = (quantity * item.price).toFixed(2)
     return (  
         <div className="cart-item">
-            <img src={item.image_url} alt={item.name} className="cart-item_img" />
+            <Link to={`/shop/${id}`}
+                className="cart-item_img-wrapper"
+            >
+                <img 
+                    src={item.image_url} 
+                    alt={item.name} 
+                    className="cart-item_img" 
+                />
+            </Link>
             <div className="cart-item_name">{item.name}</div>
             <div className="cart-item_counter">
                 <ItemCounter id={id}/>

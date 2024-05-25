@@ -32,7 +32,7 @@ export default function FilterSelector({categories, filter, setFilter, title}) {
 
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 300 }}>
+      <FormControl sx={{ m: 1, width:300 }}>
       <InputLabel className='filter-input-label' style={{color:'black'}}>{capitalize(title)}</InputLabel>
         <Select
           labelId={'input-label'+{title}}
