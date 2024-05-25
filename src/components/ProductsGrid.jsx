@@ -16,6 +16,7 @@ function ProductsGrid({products}) {
                             image={item.image_url}
                             roast={item.roast_level}
                             id={item.id}
+                            region = {item.region}
                         />
                     )
                 })}
