@@ -11,6 +11,7 @@ import CartPage from './pages/CartPage.jsx';
 import NotFound from './pages/NotFound.jsx';
 import { CartProvider } from './context/CartContext.jsx';
 import './index.css'
+import ProductPage from './pages/ProductPage.jsx';
 
 function RouteSwitch() {
   return(
@@ -20,6 +21,7 @@ function RouteSwitch() {
         <Routes>
           <Route index path = '/' element = {<HomePage/>}/>
           <Route path = '/shop' element = {<ShopPage/>}/>
+          <Route path='/shop/:productId' element={<ProductPage/>}/>
           <Route path = '/about' element = {<AboutPage/>}/>
           <Route path = '/cart' element = {<CartPage/>}/>
           <Route path = '/*' element = {<NotFound/>}/>

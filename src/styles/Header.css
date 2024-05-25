@@ -1,13 +1,37 @@
 header {
     display: flex;
     align-items: center;
-    padding: 2rem 4rem;
+    padding: 1rem 4rem;
     flex-wrap: wrap;
     justify-content: space-between;
+    background-color: white;
 }
+
+header.sticky {
+    position: fixed;
+    top: 0;;
+    transition: all 0.5s ease;
+    animation: smoothScroll 1s forwards;
+    box-shadow: 0px 15px 15px -5px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes smoothScroll {
+    0% {
+      transform: translateY(-142px);
+    }
+  
+    100% {
+      transform: translateY(0px);
+    }
+  }
 
 .header_main > a {
     color: black;
+}
+
+.logo {
+  text-decoration: none;
+  color: black;
 }
 
 .cart-icon {

@@ -1,5 +1,5 @@
 import ItemCounter from "./ItemCounter";
-import "../styles/CartPage.css"
+import "../styles/CartItem.css"
 
 function CartItem({ id, quantity, products, deleteItem }) {
 
