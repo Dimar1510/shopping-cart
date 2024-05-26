@@ -5,7 +5,7 @@ import banner from '../assets/images/shop_banner.jpg'
 import "../styles/ProductsGrid.css"
 import "../styles/ShopPage.css"
 import SortSelect from "../components/SortSelect";
-
+import { Link } from "react-router-dom";
 import FilterAltOffOutlinedIcon from '@mui/icons-material/FilterAltOffOutlined';
 import SearchField from "../components/SearchField";
 
@@ -17,6 +17,8 @@ function ShopPage() {
     const [sort, setSort] = useState('default');
     const [ascend, setAscend] = useState(true)
     const [search, setSearch] = useState('')
+
+    const [random, setRandom] = useState(1)
 
     useEffect(()=> {
         if (data) {
@@ -36,6 +38,10 @@ function ShopPage() {
 
     useEffect(()=>{
         document.title = 'Shop online | CoffeeShop'
+    },[])
+
+    useEffect(()=> {
+        setRandom(Math.floor(Math.random()*19)+1)
     },[])
 
     function handleSort() {
@@ -76,16 +82,16 @@ function ShopPage() {
         setSearch('')
     }
 
+    
+
     return (  
         <>
             <div className="shop page">
                 <section className="banner">
-                    <div className="banner-img-wrapper">
-                        <img src={banner} alt="banner" className="banner-img"/>
-                    </div>
-                    <div className="banner-text">
+                    <div className="banner-wrapper">
                         <h2 className="banner-title">All coffee products</h2>
-                        <p className="banner-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem dolore doloremque iste assumenda asperiores, facilis qui laborum natus delectus debitis, esse temporibus voluptate facere odio, praesentium accusamus reiciendis repudiandae maiores.</p>
+                        <p className="banner-content">Explore our coffee collection with a variety of beans from around the world. Classic and dessert varieties: delicate natural notes and bright aromatic tastes. Every coffee lover will find his ideal drink. Immerse yourself in the magical world of coffee!</p>
+                        <Link to={`/shop/${random}`} className="hero-link">Get random product</Link>
                     </div>
                 </section>
                 {error && 

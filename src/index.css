@@ -27,7 +27,6 @@ body {
 #root {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   min-height: 100vh;
   background-color: white;
 }
@@ -38,6 +37,10 @@ body {
 
 #root, header.sticky {
   width: clamp(300px, 100%, 1600px);
+}
+
+.page {
+  flex-grow: 1;
 }
 
 button {

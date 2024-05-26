@@ -13,11 +13,6 @@ footer {
     justify-content: center;
 }
 
-@media (max-width:900px) {
-    .footer_subscribe {
-        flex-direction: column;
-    }
-}
 
 .subscribe-title {
     text-transform: uppercase;
@@ -49,12 +44,13 @@ footer {
     display: flex;
     padding: 2rem 2rem 4rem;
     justify-content: space-evenly;
-    gap: 2rem;
+    gap: 4rem;
 }
 
 .footer-links-wrapper {
     display: flex;
     gap: 2rem;
+    justify-content: center;
 }
 
 .footer-links {
@@ -70,6 +66,10 @@ footer {
 .footer-link {
     font-size: 0.8rem;
     cursor: pointer;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
 }
 
 .footer-contacts-wrapper {
@@ -91,6 +91,7 @@ footer {
     display: flex;
     width: 100%;
     justify-content: space-evenly;
+    max-width: 300px;
 }
 
 .footer-icongroup > * {
@@ -129,3 +130,15 @@ footer {
 .gh-link:hover {
     text-decoration: underline;
 }
+
+@media (max-width:900px) {
+    .footer_subscribe {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer_main {
+        flex-direction: column;
+    }
+  }

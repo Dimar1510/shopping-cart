@@ -3,6 +3,7 @@ import CartItem from "../components/CartItem";
 import { useCart } from "../context/CartContext";
 import useFetch from "../hooks/useFetch";
 import { Link } from "react-router-dom";
+import SentimentDissatisfiedOutlinedIcon from '@mui/icons-material/SentimentDissatisfiedOutlined';
 import "../styles/CartPage.css"
 
 const MIN = 20
@@ -70,8 +71,9 @@ function CartPage() {
             : 
                 <>
                     <div className="cart-empty">
+                        <SentimentDissatisfiedOutlinedIcon className="empty-icon" sx={{ fontSize: 50 }}/> 
                         <h2 className="empty-title">Your cart is empty</h2>
-                        <Link className="btn-cart" to={'/shop'}>Shop now</Link>
+                        <Link className="shop-link" to={'/shop'}>Shop now</Link>
                     </div>
                 </>
             }

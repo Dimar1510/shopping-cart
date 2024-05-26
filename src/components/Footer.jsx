@@ -42,7 +42,7 @@ function Footer() {
                 <div className="footer-contacts-wrapper">
                     <h3 className="footer-contacts-title">Let us know what you think</h3>
                     <p className="footer-contacts-text">
-                    This will help us to become even better!</p>
+                    This will help us become even better!</p>
                     <h3 className="footer-phone">
                         <LocalPhoneOutlinedIcon/>
                         (000) 555-12-34

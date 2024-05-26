@@ -1,6 +1,8 @@
 function AboutPage() {
     return (  
-        <div>AboutUs</div>
+        <div className="about page">
+            AboutUs
+        </div>
     );
 }
 

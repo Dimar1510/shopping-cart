@@ -1,34 +1,63 @@
-.shop {
-    padding: 0 5rem;
-}
-
 .banner {
     display: flex;
-    flex-wrap: wrap;
-    padding: 2rem 0;
+    justify-content: center;
+    margin-bottom: 2rem;
+    background: url('../assets/images/shop_banner.jpg') no-repeat;
+    background-size: cover;
+    color: white;
+    position: relative;
 }
 
-.banner-img-wrapper {
-    flex: 1;
-}
-
-.banner-img {
-    max-width: 100%;
+.banner::after {
+    content: '';
+    width: 100%;
     height: 100%;
-    object-fit: cover;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
 }
 
-.banner-text {
-    flex: 1;
-    padding: 2rem;
+.banner-wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: 2rem;
+    z-index: 1;
+    padding: 5rem 0;
+    width: 80%;
 }
 
 .banner-title {
     text-align: center;
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+
+.banner-content {
+    text-align: center;
+    align-self: center;
+    max-width: 600px;
+    font-size: 1.2rem;
+}
+
+.hero-link {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: fit-content;
+    text-align: center;
+    border: 1px solid white;
+    padding: 1rem;
+    align-self: center;
+    backdrop-filter: blur(10px);
+    border-radius: 0.5rem;
+    transition: 0.3s ease-in;
+}
+
+.hero-link:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.5);
 }
 
 .filters-wrapper {
@@ -37,7 +66,7 @@
     gap: 2rem;
     flex-wrap: wrap;
     justify-content: space-between;
-    
+    padding: 2rem 5rem;
 }
 
 .filters-selectors {
@@ -66,4 +95,10 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+}
+
+@media (max-width: 900px) {
+    .filters-wrapper {
+        padding: 2rem;
+    }
 }

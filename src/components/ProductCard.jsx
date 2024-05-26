@@ -19,7 +19,7 @@ function ProductCard({id, name, image, price, roast}) {
         <div className="card-wrapper">
             <div className="product-card">
                 <div className='product-name'>{name}</div>
-                <Link to={`/shop/${id}`}>
+                <Link to={`/shop/${id}`} className='card-link'>
                     <div className="image-wrapper">
                         <img src={image} alt={name} className="card-image" loading='lazy'/>
                     </div>
