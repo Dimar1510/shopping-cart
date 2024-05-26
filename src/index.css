@@ -7,11 +7,13 @@
   list-style: none;
 }
 
+
 :root {
   --clr-dark: #675D50;
   --clr-light: #A9907E;
   --clr-white: #eeeeee;
   --clr-accent: #ABC4AA;
+  --header-offset: 0px;
 }
 
 body {
@@ -25,8 +27,13 @@ body {
 #root {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   min-height: 100vh;
   background-color: white;
+}
+
+#root:has(header.sticky) {
+  margin-top: var(--header-offset)
 }
 
 #root, header.sticky {
@@ -35,5 +42,15 @@ body {
 
 button {
   font-family: inherit;
+}
+
+button:disabled {
+  border-color: lightgrey;
+  cursor: auto;
+}
+
+button:disabled:hover {
+  background: none;
+  color: black;
 }
 

@@ -34,6 +34,10 @@ function ShopPage() {
         handleSearch()
     },[search])
 
+    useEffect(()=>{
+        document.title = 'Shop online | CoffeeShop'
+    },[])
+
     function handleSort() {
         const newProducts = [...products]
         if (sort === 'default') {
@@ -85,7 +89,7 @@ function ShopPage() {
                     </div>
                 </section>
                 {error && 
-                    <p>Api error, check back later</p>
+                    <p style={{textAlign:"center"}}>Api error, check back later</p>
                 }
                 {loading
                 ? 
@@ -114,8 +118,14 @@ function ShopPage() {
                             </div>
                             
                         </div>
-
-                        <ProductsGrid products={products}/>                        
+                        <ProductsGrid products={products}/>
+                        {(products.length === 0 && search !== '') && 
+                        
+                            <p style={{textAlign:'center', padding:'2rem', fontSize:'1.5rem'}}
+                            >No search results
+                            </p>
+                            
+                        }                        
                     </>
                 }
             </div>

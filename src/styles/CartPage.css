@@ -3,6 +3,9 @@
     width: 100%;
     max-width: 1200px;
     align-self: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .cart_title {
@@ -45,21 +48,7 @@
     font-size: 0.8rem;
     font-style: italic;
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(132, 132, 132, 0.5);
-}
-
-.btn-cart {
-    height: fit-content;
-    width: fit-content;
-    padding: 0.5rem 2rem;
-    justify-self: end;
-    align-self: center;
-    text-transform: uppercase;
-    background: none;
-    text-decoration: none;
-    color: black;
-    border: 1px solid black;
-    border-radius: 0.5rem;
+    
 }
 
 .shop-link {
@@ -72,5 +61,15 @@
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+    justify-self: center;
+    transform: translateY(50%);
+}
 
+.min-order {
+    padding-bottom: 1rem;
+    font-style: italic;
+    color: maroon;
+    position: absolute;
+    top: 4.5rem;
+    left: 10%;
 }

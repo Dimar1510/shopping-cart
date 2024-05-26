@@ -10,8 +10,9 @@ import AboutPage from './pages/AboutPage.jsx';
 import CartPage from './pages/CartPage.jsx';
 import NotFound from './pages/NotFound.jsx';
 import { CartProvider } from './context/CartContext.jsx';
-import './index.css'
 import ProductPage from './pages/ProductPage.jsx';
+import Footer from './components/Footer.jsx';
+import './index.css'
 
 function RouteSwitch() {
   return(
@@ -26,6 +27,7 @@ function RouteSwitch() {
           <Route path = '/cart' element = {<CartPage/>}/>
           <Route path = '/*' element = {<NotFound/>}/>
         </Routes>
+        <Footer/>
       </CartProvider>
     </BrowserRouter>
   )

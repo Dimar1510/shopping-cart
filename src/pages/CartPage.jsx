@@ -5,6 +5,8 @@ import useFetch from "../hooks/useFetch";
 import { Link } from "react-router-dom";
 import "../styles/CartPage.css"
 
+const MIN = 20
+
 function CartPage() {
     
     const [products, setProducts] = useState([])
@@ -36,6 +38,9 @@ function CartPage() {
             {cart.length > 0 
             ?   <>
                     <h2 className="cart_title">Your cart</h2>
+                    {cartTotalPrice() < MIN &&
+                        <div className="min-order">Minimum order value is $20</div>
+                    }
                     <div className="cart_list">
                         {cart.map(item => {
                             return (
@@ -50,9 +55,15 @@ function CartPage() {
                             <div className="total-text">Shipping and taxes computed at checkout</div>
                         </div>
                         <button 
-                            className="btn-cart"
+                            className="btn-to-cart"
                             onClick={()=> alert('Chekout')}
-                        >Checkout</button>
+                            disabled={cartTotalPrice() < MIN}
+                        >
+                            {cartTotalPrice() < MIN 
+                                ? `Add  $${MIN - cartTotalPrice()} worth of items`
+                                : 'Checkout'
+                            }
+                        </button>
                         <Link className="shop-link" to={'/shop'}>Keep Shopping</Link>
                     </div>
                 </>

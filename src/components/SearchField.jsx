@@ -4,7 +4,12 @@ export default function SearchField({setSearch, search}) {
   return (
       <div className="sort-select">
           <TextField
-            id="outlined-basic" 
+            sx={{
+              "& .MuiInputLabel-outlined": {
+                color: "#000000",
+              },
+            }}
+            id="search" 
             label="Search..." 
             variant="outlined" 
             value={search}

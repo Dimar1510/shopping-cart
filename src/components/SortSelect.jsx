@@ -15,7 +15,7 @@ export default function SortSelect({sort, setSort, handleAscend}) {
 
     return (
         <div className="sort-select">
-            <Box sx={{ maxWidth: 120 }}>
+            <Box sx={{ width: 200 }}>
             <FormControl fullWidth>
                 <InputLabel id="select-label" style={{color:'black'}}>Sort</InputLabel>
                 <Select

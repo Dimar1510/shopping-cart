@@ -22,6 +22,7 @@ function ProductPage() {
     useEffect(()=> {
         if (data) {
             setProducts(data)
+            
         }
     }, [data])
 
@@ -41,8 +42,11 @@ function ProductPage() {
         }
     }, [product])
     
-    
-    if (error) return <p>Api error, check back later</p>
+    useEffect(()=>{
+        if (product) document.title = `${product.name} | CoffeeShop`
+    },[product])
+
+    if (error) return <p style={{textAlign:"center"}}>Api error, check back later</p>
     if (loading) return <p>There will be a loading page here</p>
     
  
