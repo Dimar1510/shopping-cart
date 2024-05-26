@@ -80,7 +80,11 @@ export function CartProvider( {children} ) {
         })
     }
 
-    return <CartContext.Provider value={{deleteItem, setItem, getItemCount, incrementItem, decrementItem, cart, totalQuantity}}>
+    function clearCart() {
+        setCart([])
+    }
+
+    return <CartContext.Provider value={{clearCart, deleteItem, setItem, getItemCount, incrementItem, decrementItem, cart, totalQuantity}}>
         {children}
     </CartContext.Provider>
 }

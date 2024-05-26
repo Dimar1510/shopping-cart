@@ -18,7 +18,7 @@
     display: grid;
     grid-template-rows: 1fr 1fr;
     justify-content: end;
-    padding: 2rem;
+    padding: 2rem 0;
 }
 
 .cart_checkout > * {
@@ -48,7 +48,21 @@
     font-size: 0.8rem;
     font-style: italic;
     padding-bottom: 1rem;
-    
+}
+
+.btn-cart_clear {
+    width: fit-content;
+    height: fit-content;
+    align-self: flex-end;
+    margin-top: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s ease-out;
+}
+
+.btn-cart_clear:hover {
+    color: gray;
 }
 
 .shop-link {

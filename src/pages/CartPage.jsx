@@ -12,7 +12,7 @@ function CartPage() {
     
     const [products, setProducts] = useState([])
     const { data, error, loading } = useFetch()
-    const {cart, deleteItem} = useCart()
+    const {cart, deleteItem, clearCart} = useCart()
     
     useEffect(()=> {
         if (data) {
@@ -49,6 +49,7 @@ function CartPage() {
                             )
                         })}
                     </div>
+                    <button className="btn-cart_clear" onClick={clearCart}>Remove all items</button>
                     <div className="cart_checkout">
                         <div className="cart_total">
                             <div className="total-label">Subtotal</div>
