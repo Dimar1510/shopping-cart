@@ -76,6 +76,11 @@ header.sticky {
 
 .cart-icon {
     position: relative;
+    transition: 0.3s ease-in-out;
+}
+
+.cart-icon:hover {
+  transform: translateY(-5px);
 }
 
 .cart-badge {

@@ -3,7 +3,7 @@ import bean from '../assets/images/bean.svg'
 import CardButton from './CardButton';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
-
+import Tooltip from '@mui/material/Tooltip';
 
 function ProductCard({id, name, image, price, roast}) {
     const {getItemCount} = useCart()
@@ -26,14 +26,15 @@ function ProductCard({id, name, image, price, roast}) {
                 </Link>
                 
                 <div className="card-footer">
-                    <div className="product-roast">
-                        {roastLevel.map((level, index) => {
-                            return (
-                                <img key={index} src={bean} alt="bean" className={level ? 'bean' : 'bean empty'} style={{width: 15}}/>
-                            )
-                        })}
-                    </div>
-                
+                    <Tooltip title={'Roast level: ' + roast} placement='top-start'>
+                        <div className="product-roast">
+                            {roastLevel.map((level, index) => {
+                                return (
+                                    <img key={index} src={bean} alt="bean" className={level ? 'bean' : 'bean empty'} style={{width: 15}}/>
+                                )
+                            })}
+                        </div>
+                    </Tooltip>
                     <div className="price-wrapper">
                         <div className="weight">500g</div>
                         <div className='product-price'>

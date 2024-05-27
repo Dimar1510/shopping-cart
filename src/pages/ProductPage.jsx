@@ -7,6 +7,7 @@ import bean from '../assets/images/bean.svg'
 import '../styles/ProductPage.css'
 import CardButton from "../components/CardButton";
 import ProductSection from "../components/ProductSection";
+import ImageSlider from "../components/ImageSlider";
 
 
 function ProductPage() {
@@ -64,7 +65,8 @@ function ProductPage() {
                 <Link to={`/${productId}`}>{product.name}</Link>
             </div>
             <div className="product_wrapper">
-                <img src={product.image_url} alt={product.name} className="product_img"/>
+                <ImageSlider productImage = {product.image_url}/>
+                {/* <img src={product.image_url} alt={product.name} className="product_img"/> */}
                 <div className="product_main">
                     <h2 className="product_title">{product.name}</h2>
                     <p className="product_description">{product.description}</p>

@@ -22,7 +22,9 @@
 .product_wrapper {
     display: flex;
     flex-wrap: wrap;
+    padding-bottom: 1rem;
     border-bottom: 1px solid grey;
+    gap: 2rem;
 }
 
 .product_img {
@@ -73,3 +75,7 @@
    
 }
 
+.slider {
+    width: 500px;
+    overflow: hidden;
+}
