@@ -6,15 +6,18 @@ import { X } from "@mui/icons-material";
 import { GitHub } from "@mui/icons-material";
 import bean from '../assets/images/bean.svg'
 import '../styles/Footer.css'
+import { Divider } from "@mui/material";
 
 function Footer() {
     return (  
         <footer>
+            <Divider  />
             <div className="footer_subscribe">
                 <h3 className="subscribe-title">Be the first to know about discounts</h3>
                 <p className="subscribe-text">Get a selection of new products every week</p>
                 <Subscribe/>
             </div>
+            <Divider  />
             <div className="footer_main">
                 <div className="footer-links-wrapper">
                     <ul className="footer-links">
@@ -39,6 +42,7 @@ function Footer() {
                         <li className="footer-link">Contact us</li>
                     </ul>
                 </div>
+                <Divider orientation="vertical" variant="middle" flexItem />
                 <div className="footer-contacts-wrapper">
                     <h3 className="footer-contacts-title">Let us know what you think</h3>
                     <p className="footer-contacts-text">

@@ -9,7 +9,6 @@ footer {
     padding: 2rem;
     margin: 2rem;
     align-items: center;
-    border-block: 1px solid lightgrey;
     justify-content: center;
 }
 
@@ -44,7 +43,7 @@ footer {
     display: flex;
     padding: 2rem 2rem 4rem;
     justify-content: space-evenly;
-    gap: 4rem;
+    gap: 2rem;
 }
 
 .footer-links-wrapper {

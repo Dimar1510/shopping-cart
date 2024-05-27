@@ -20,6 +20,10 @@ function ProductPage() {
     
     const [roast, setRoast] = useState([])
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+
     useEffect(()=> {
         if (data) {
             setProducts(data)
@@ -49,8 +53,7 @@ function ProductPage() {
 
     if (error) return <p style={{textAlign:"center"}}>Api error, check back later</p>
     if (loading) return <p>There will be a loading page here</p>
-    
- 
+
 
     return ( 
         product 
@@ -66,7 +69,6 @@ function ProductPage() {
             </div>
             <div className="product_wrapper">
                 <ImageSlider productImage = {product.image_url}/>
-                {/* <img src={product.image_url} alt={product.name} className="product_img"/> */}
                 <div className="product_main">
                     <h2 className="product_title">{product.name}</h2>
                     <p className="product_description">{product.description}</p>
