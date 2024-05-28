@@ -8,7 +8,7 @@ import '../styles/ProductPage.css'
 import CardButton from "../components/CardButton";
 import ProductSection from "../components/ProductSection";
 import ImageSlider from "../components/ImageSlider";
-
+import Loading from "../components/Loading";
 
 function ProductPage() {
     const { productId } = useParams();
@@ -52,7 +52,7 @@ function ProductPage() {
     },[product])
 
     if (error) return <p style={{textAlign:"center"}}>Api error, check back later</p>
-    if (loading) return <p>There will be a loading page here</p>
+    if (loading) return <Loading/>
 
 
     return ( 
