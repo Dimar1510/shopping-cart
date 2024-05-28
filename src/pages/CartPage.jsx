@@ -5,6 +5,7 @@ import useFetch from "../hooks/useFetch";
 import { Link } from "react-router-dom";
 import SentimentDissatisfiedOutlinedIcon from '@mui/icons-material/SentimentDissatisfiedOutlined';
 import "../styles/CartPage.css"
+import Loading from "../components/Loading";
 
 const MIN = 20
 
@@ -19,9 +20,13 @@ function CartPage() {
             setProducts(data)
         }
     }, [data])
+
+    useEffect(()=>{
+        document.title = `Cart | CoffeeShop`
+    },[])
     
     if (error) return <p>Api error, check back later</p>
-    if (loading) return <p>There will be a loading page here</p>
+    if (loading) return <Loading/>
 
     const cartTotalPrice = () => {
         if(products.length === 0) return 0

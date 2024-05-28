@@ -1,0 +1,38 @@
+.notfound {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    align-self: center;
+    padding: 2rem;
+}
+
+.notfound-header {
+    text-transform: uppercase;
+}
+
+.notfound-image {
+    max-width: 300px;
+}
+
+.notfound-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    line-height: 1.5rem;
+}
+
+.notfound-link {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.notfound-link:hover {
+    text-decoration: underline;
+}

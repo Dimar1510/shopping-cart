@@ -9,10 +9,15 @@ import Divider from '@mui/material/Divider';
 
 function HomePage() {
 
+    useEffect(()=>{
+        document.title = `CoffeeShop`
+    },[])
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
+    
     return (  
         <div className="home page">
             <div className="home_hero">

@@ -6,6 +6,7 @@ import "../styles/ShopPage.css"
 import SortSelect from "../components/SortSelect";
 import { Link } from "react-router-dom";
 import SearchField from "../components/SearchField";
+import Loading from "../components/Loading";
 
 function ShopPage() {
     const [allProducts, setAllProducts] = useState([])
@@ -95,7 +96,7 @@ function ShopPage() {
                 }
                 {loading
                 ? 
-                    <p>Loading</p>
+                <Loading/>
                 : 
                     <>
                         <div className="filters-wrapper">
