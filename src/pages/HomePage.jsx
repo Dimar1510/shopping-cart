@@ -21,7 +21,7 @@ function HomePage() {
     return (  
         <div className="home page">
             <div className="home_hero">
-                <video src={video} autoPlay muted loop id='myVideo' playsinline type='video/mp4'/>
+                <video src={video} autoPlay muted loop id='myVideo' playsInline type='video/mp4'/>
                 <div className="hero-content">
                     <h2 className="hero-title">Hello! <br/> We make tasty coffee</h2>
                     <p className="hero-text">And then we deliver it right to your door</p>
