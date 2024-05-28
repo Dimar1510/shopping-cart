@@ -13,6 +13,10 @@ function AboutPage() {
         document.title = `About | CoffeeShop`
     },[])
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (  
         <div className="about page">
             <div className="product_links">

@@ -59,7 +59,7 @@ button:disabled:hover {
 }
 
 @media (max-width: 600px) {
-  .page {
+  .page:not(.cart.page) {
     padding: 1rem 0;
   }
 }

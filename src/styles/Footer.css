@@ -140,4 +140,7 @@ footer {
     .footer_main {
         flex-direction: column;
     }
+    .footer_subscribe {
+        margin: 0;
+    }
   }

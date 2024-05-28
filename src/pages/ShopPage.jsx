@@ -19,18 +19,14 @@ function ShopPage() {
 
     const [random, setRandom] = useState(1)
 
-    console.log('shop')
     useEffect(()=> {
         if (data) {
             setAllProducts(data)
-            console.log(data)
-            
         }
     }, [data])
 
     useEffect(()=> {
         setProducts(allProducts)
-        console.log(products)
     }, [allProducts])
 
     useEffect(()=>{
@@ -48,6 +44,10 @@ function ShopPage() {
     useEffect(()=> {
         setRandom(Math.floor(Math.random()*19)+1)
     },[])
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     function handleSort() {
         const newProducts = [...products]

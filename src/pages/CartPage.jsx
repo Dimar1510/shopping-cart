@@ -24,6 +24,10 @@ function CartPage() {
     useEffect(()=>{
         document.title = `Cart | CoffeeShop`
     },[])
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     
     if (error) return <p>Api error, check back later</p>
     if (loading) return <Loading/>
@@ -37,6 +41,8 @@ function CartPage() {
         })
         return total.toFixed(2)
     }
+
+
 
 
     return (    
