@@ -58,3 +58,10 @@ button:disabled:hover {
   color: black;
 }
 
+@media (max-width: 600px) {
+  .page {
+    padding: 0rem;
+  }
+}
+
+
