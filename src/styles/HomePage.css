@@ -94,6 +94,7 @@ video {
     flex-direction: column;
     justify-content: space-between;
     padding: 1rem;
+    gap: 1rem;
 }
 
 .new-title {
@@ -108,6 +109,7 @@ video {
 .posts-wrapper {
     display: flex;
     gap: 2rem;
+    flex-wrap: wrap;
 }
 
 .blog-post {
@@ -150,5 +152,24 @@ video {
 
 .post-link:hover {
     font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .home_main {
+        padding: 1rem 1rem;
+    }
+    .posts-wrapper {
+        flex-direction: column;
+    }
+    .new-product {
+        min-width: 200px;
+        width: 100%;
+        padding: 0;
+        display: grid;
+    }
+    .new-text {
+        grid-row: 2/3;
+    }
+
 }
 

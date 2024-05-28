@@ -25,6 +25,7 @@
     padding-bottom: 1rem;
     border-bottom: 1px solid grey;
     gap: 2rem;
+    justify-content: center;
 }
 
 .product_img {

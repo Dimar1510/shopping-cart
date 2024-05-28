@@ -20,6 +20,7 @@ function AboutPage() {
                 /
                 <Link to={'/about'}>About</Link>
             </div>
+            <Divider/>
             <section className="about-section">
                 <div className="flex-wrapper">
                     <div className="wrl">
@@ -28,7 +29,7 @@ function AboutPage() {
                         <p className="about-text">We have our own warehouse with coffee and we can deliver your order to anywhere in the capital in two days. Or maybe faster...</p>
                     </div>
                     <div className="wrr">
-                        <img src={image} alt="about" className="about-image"/>
+                        <img src={image} alt="about" className="about-image" loading="lazy"/>
                     </div>
                 </div>
             </section>

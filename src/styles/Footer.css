@@ -42,7 +42,7 @@ footer {
 .footer_main {
     display: flex;
     padding: 2rem 2rem 4rem;
-    justify-content: space-evenly;
+    justify-content: center;
     gap: 2rem;
 }
 

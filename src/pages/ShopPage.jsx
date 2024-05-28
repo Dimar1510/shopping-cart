@@ -23,7 +23,6 @@ function ShopPage() {
         if (data) {
             setAllProducts(data)
             setProducts(allProducts)
-            console.log(data)
         }
     }, [data])
 

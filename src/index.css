@@ -60,7 +60,7 @@ button:disabled:hover {
 
 @media (max-width: 600px) {
   .page {
-    padding: 0rem;
+    padding: 1rem;
   }
 }
 
