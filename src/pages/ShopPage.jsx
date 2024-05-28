@@ -19,12 +19,19 @@ function ShopPage() {
 
     const [random, setRandom] = useState(1)
 
+    console.log('shop')
     useEffect(()=> {
         if (data) {
             setAllProducts(data)
-            setProducts(allProducts)
+            console.log(data)
+            
         }
     }, [data])
+
+    useEffect(()=> {
+        setProducts(allProducts)
+        console.log(products)
+    }, [allProducts])
 
     useEffect(()=>{
         handleSort()
@@ -98,7 +105,7 @@ function ShopPage() {
                 <Loading/>
                 : 
                     <>
-                        {/* <div className="filters-wrapper">
+                        <div className="filters-wrapper">
                             <div className="filters-selectors">
                                 <SortSelect 
                                     handleAscend={handleAscend}
@@ -119,7 +126,7 @@ function ShopPage() {
                                 >Reset to default</button>
                             </div>
                             
-                        </div> */}
+                        </div>
                         <ProductsGrid products={products}/>
                         {(products.length === 0 && search !== '') && 
                         
