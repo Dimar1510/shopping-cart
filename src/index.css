@@ -46,6 +46,7 @@ body {
 
 button {
   font-family: inherit;
+  color: black;
 }
 
 button:disabled {

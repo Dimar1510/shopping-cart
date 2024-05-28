@@ -10,6 +10,10 @@ function NotFound() {
         document.title = `404 | CoffeeShop`
     },[])
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+
     return ( 
         <div className="notfound">
             <div className="notfound-image-wrapper">
