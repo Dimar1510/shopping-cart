@@ -98,7 +98,7 @@ function ShopPage() {
                 <Loading/>
                 : 
                     <>
-                        <div className="filters-wrapper">
+                        {/* <div className="filters-wrapper">
                             <div className="filters-selectors">
                                 <SortSelect 
                                     handleAscend={handleAscend}
@@ -119,7 +119,7 @@ function ShopPage() {
                                 >Reset to default</button>
                             </div>
                             
-                        </div>
+                        </div> */}
                         <ProductsGrid products={products}/>
                         {(products.length === 0 && search !== '') && 
                         
