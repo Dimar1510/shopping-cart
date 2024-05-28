@@ -1,13 +1,14 @@
 nav {
     padding: 1rem;
-    width: 70%;
     max-width: 400px;
+    position: absolute;
+    transform: translateX(calc(50vw - 200px));
 }
 
 .nav_links {
     display: flex;
     justify-content: space-around;
-    gap: 1rem;
+    gap: 3rem;
 }
 
 .nav_link {
@@ -40,6 +41,10 @@ nav {
 @media (max-width: 600px) {
     nav {
       padding: 0;
+      transform: translateX(50%);
+    }
+    .nav_links {
+        gap: 1rem;
     }
   }
 
