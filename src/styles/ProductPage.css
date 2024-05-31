@@ -80,3 +80,9 @@
     width: 500px;
     overflow: hidden;
 }
+
+@media (max-width: 600px) {
+    .product_main {
+        padding: 0 1rem;
+    }
+}
