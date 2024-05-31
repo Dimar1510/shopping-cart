@@ -13,7 +13,7 @@ nav {
 }
 
 .nav_link {
-    color: black;
+    color: var(--clr-black);
     text-decoration: none;
     text-transform: uppercase;
     position: relative;

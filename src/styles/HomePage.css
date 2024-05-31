@@ -5,7 +5,7 @@
     height: 650px;
     position: relative;
     z-index: 2;
-    color: white;
+    color: var(--clr-white);
     gap: 2rem;
 }
 
@@ -144,7 +144,7 @@ video {
 }
 
 .post-link {
-    color: black;
+    color: var(--clr-black);
     text-transform: uppercase;
     font-size: 0.8rem;
     letter-spacing: 0.05rem;

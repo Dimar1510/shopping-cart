@@ -9,11 +9,23 @@ export default function SearchField({setSearch, search}) {
               "& .MuiInputLabel-outlined": {
                 color: "#000000",
               },
+              '& .MuiOutlinedInput-root': {
+                '& fieldset': {
+     
+                },
+                '&:hover fieldset': {
+                  borderColor: 'black',
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: 'black',
+                },
+              },
             }}
             id="search" 
             label="Search..." 
             variant="outlined" 
             value={search}
+
             onChange={(e)=>{
                 setSearch(e.target.value.trim())
             }}

@@ -1,6 +1,7 @@
 footer {
     display: flex;
     flex-direction: column;
+    color: var(--clr-black);
 }
 
 .footer_subscribe {
@@ -25,8 +26,8 @@ footer {
 
 .btn-subscribe {
     height: 40px;
-    border: 1px solid black;
-    background-color: white;
+    border: 1px solid var(--clr-black);
+    background-color: var(--clr-white);
     padding: 0rem 1rem;
     border-left: none;
     text-transform: uppercase;
@@ -35,8 +36,8 @@ footer {
 }
 
 .btn-subscribe:hover {
-    background-color: black;
-    color: white;
+    background-color: var(--clr-black);
+    color: var(--clr-white);
 }
 
 .footer_main {
@@ -101,8 +102,8 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: black;
-    color: white;
+    background-color: var(--clr-black);
+    color: var(--clr-white);
     padding: 0.5rem;
 }
 
@@ -118,7 +119,7 @@ footer {
 }
 
 .gh-link {
-    color: white;
+    color: var(--clr-white);
     display: flex;
     align-items: center;
     gap: 0.5rem;

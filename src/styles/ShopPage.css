@@ -10,7 +10,7 @@
     margin-bottom: 2rem;
     background: url('../assets/images/shop_banner.jpg') no-repeat;
     background-size: cover;
-    color: white;
+    color: var(--clr-white);
     position: relative;
     width: 100%;
 }
@@ -48,12 +48,12 @@
 }
 
 .hero-link {
-    color: white;
+    color: var(--clr-white);
     text-decoration: none;
     text-transform: uppercase;
     width: fit-content;
     text-align: center;
-    border: 1px solid white;
+    border: 1px solid var(--clr-white);
     padding: 1rem;
     align-self: center;
     backdrop-filter: blur(10px);
@@ -62,8 +62,8 @@
 }
 
 .hero-link:hover {
-    background-color: white;
-    color: black;
+    background-color: var(--clr-white);
+    color: var(--clr-black);
     box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.5);
 }
 

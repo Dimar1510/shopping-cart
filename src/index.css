@@ -8,10 +8,8 @@
 }
 
 :root {
-  --clr-dark: #675D50;
-  --clr-light: #A9907E;
-  --clr-white: #eeeeee;
-  --clr-accent: #ABC4AA;
+  --clr-white: #f8f8f8;
+  --clr-black: #111111;
   --header-offset: 0px;
   --font-header: "Quicksand", sans-serif;
 }
@@ -20,7 +18,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #eaeaea;
+  background-color: #d2d2d2;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -28,7 +26,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: white;
+  background-color: var(--clr-white);
 }
 
 #root:has(header.sticky) {

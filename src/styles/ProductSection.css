@@ -13,7 +13,7 @@
 
 .section-title {
     text-transform: uppercase;
-    color: black;
+    color: var(--clr-black);
     display: flex;
     align-items: center;
     gap: 0.5rem;

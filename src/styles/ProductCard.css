@@ -7,6 +7,7 @@
     padding: 0.5rem;
     box-shadow: 1px 1px 15px 0px rgba(0, 0, 0, 0.2); 
     transition: 0.15s ease-out;
+    color: var(--clr-black);
 }
 
 .product-card:hover{
@@ -90,18 +91,19 @@
 
 .btn-to-cart {
     width: 100%;
-    border: 1px solid black;
+    border: 1px solid var(--clr-black);
     padding: 1.25rem;
     transition: 0.2s ease;
+    color: inherit;
 }
 
 .btn-to-cart:hover {
-    background-color: black;
-    color: white;
+    background-color: var(--clr-black);
+    color: var(--clr-white);
 }
 
 .btn-to-cart:hover svg {
-    color: white;
+    color: var(--clr-white);
 }
 
 .btn-change-count {
@@ -114,8 +116,7 @@
     padding: 0.25rem;
     border-radius: 40px;
     outline: none;
-    border: 1px solid black;
-
+    border: 1px solid var(--clr-black);
 }
 
 input::-webkit-outer-spin-button,

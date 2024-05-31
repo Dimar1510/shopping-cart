@@ -2,6 +2,7 @@
     padding: 1rem 5rem;
     max-width: 1000px;
     align-self: center;
+    color: var(--clr-black);
 }
 
 .product_links {
@@ -12,7 +13,7 @@
 }
 
 .product_links > a {
-    color: black;
+    color: var(--clr-black);
 }
 
 .product_links > a:last-child {
@@ -64,7 +65,7 @@
 }
 
 .flavor, .grind {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--clr-black);
     border-radius: 0.5rem;
     padding: 0.25rem 0.5rem;
 }

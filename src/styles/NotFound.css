@@ -28,7 +28,7 @@
 }
 
 .notfound-link {
-    color: black;
+    color: var(--clr-black);
     font-weight: bold;
     text-decoration: none;
 }
