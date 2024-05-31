@@ -8,7 +8,7 @@
 }
 
 :root {
-  --clr-white: #f8f8f8;
+  --clr-white: white;
   --clr-black: #111111;
   --header-offset: 0px;
   --font-header: "Quicksand", sans-serif;
