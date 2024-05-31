@@ -94,7 +94,9 @@
     scale: 1.05;
 }
 
-
+.empty-title {
+    text-align: center;
+}
 
 .min-order {
     padding-bottom: 1rem;

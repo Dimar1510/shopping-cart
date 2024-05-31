@@ -8,13 +8,16 @@ import "../styles/CartPage.css"
 import Loading from "../components/Loading";
 
 const MIN = 20
+const ITEMWEIGHT = 500
 
 function CartPage() {
     
     const [products, setProducts] = useState([])
     const { data, error, loading } = useFetch()
-    const {cart, deleteItem, clearCart} = useCart()
+    const {cart, deleteItem, clearCart, totalQuantity} = useCart()
     
+
+
     useEffect(()=> {
         if (data) {
             setProducts(data)
@@ -61,12 +64,17 @@ function CartPage() {
                         })}
                     </div>
                     <button className="btn-cart_clear" onClick={clearCart}>Remove all items</button>
+                    <div className="cart_weight">
+                        Total weight: {(totalQuantity() * ITEMWEIGHT / 1000).toFixed(2) + 'kg'}
+                    </div>
                     <div className="cart_checkout">
                         <div className="cart_total">
                             <div className="total-label">Subtotal</div>
                             <div className="total-amount">${cartTotalPrice()}</div>
                             <div className="total-text">Shipping and taxes computed at checkout</div>
                         </div>
+
+
                         <button 
                             className="btn-to-cart"
                             onClick={()=> alert('Chekout')}
