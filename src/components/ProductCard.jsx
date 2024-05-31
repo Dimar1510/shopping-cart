@@ -4,6 +4,7 @@ import CardButton from './CardButton';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
 import Tooltip from '@mui/material/Tooltip';
+import PropTypes from "prop-types";
 
 function ProductCard({id, name, image, price, roast}) {
     const {getItemCount} = useCart()
@@ -48,6 +49,13 @@ function ProductCard({id, name, image, price, roast}) {
             </div>
         </div>  
     );
+}
+
+ProductCard.propTypes = {
+    id: PropTypes.number,
+    name: PropTypes.string,
+    price: PropTypes.number,
+    roast: PropTypes.number
 }
 
 export default ProductCard;

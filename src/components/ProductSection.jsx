@@ -1,6 +1,7 @@
 import ChairOutlinedIcon from '@mui/icons-material/ChairOutlined';
 import AcUnitOutlinedIcon from '@mui/icons-material/AcUnitOutlined';
 import '../styles/ProductSection.css'
+import PropTypes from "prop-types";
 
 function ProductSection({description}) {
     return (  
@@ -64,6 +65,10 @@ function ProductSection({description}) {
 
         </section>
     );
+}
+
+ProductSection.propTypes = {
+    description: PropTypes.string
 }
 
 export default ProductSection;

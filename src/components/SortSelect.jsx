@@ -3,8 +3,8 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
 import SwapVertOutlinedIcon from '@mui/icons-material/SwapVertOutlined';
+import PropTypes from "prop-types";
 
 export default function SortSelect({sort, setSort, handleAscend}) {
 
@@ -39,4 +39,10 @@ export default function SortSelect({sort, setSort, handleAscend}) {
             </button>
         </div>
     );
+}
+
+SortSelect.propTypes = {
+    sort: PropTypes.string,
+    setSort: PropTypes.func,
+    handleAscend: PropTypes.func
 }

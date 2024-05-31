@@ -1,4 +1,5 @@
 import TextField from '@mui/material/TextField';
+import PropTypes from "prop-types";
 
 export default function SearchField({setSearch, search}) {
   return (
@@ -20,4 +21,9 @@ export default function SearchField({setSearch, search}) {
 
       </div>
   );
+}
+
+SearchField.propTypes = {
+  setSearch: PropTypes.func,
+  search: PropTypes.string
 }

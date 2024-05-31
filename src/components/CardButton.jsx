@@ -1,6 +1,7 @@
 import { useCart } from "../context/CartContext";
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import ItemCounter from "./ItemCounter";
+import PropTypes from "prop-types";
 
 function CardButton({id}) {
 
@@ -25,6 +26,10 @@ function CardButton({id}) {
             }
         </div>
     );
+}
+
+CardButton.propTypes = {
+    id: PropTypes.number
 }
 
 export default CardButton;

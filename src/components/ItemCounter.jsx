@@ -2,6 +2,7 @@ import { useCart } from "../context/CartContext";
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import RemoveOutlinedIcon from '@mui/icons-material/RemoveOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import PropTypes from "prop-types";
 
 function ItemCounter({id}) {
     const {setItem, getItemCount, incrementItem, decrementItem, deleteItem} = useCart()
@@ -43,6 +44,10 @@ function ItemCounter({id}) {
             </button>
         </div> 
     );
+}
+
+ItemCounter.propTypes = {
+    id: PropTypes.number
 }
 
 export default ItemCounter;

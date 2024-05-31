@@ -1,6 +1,7 @@
 import ItemCounter from "./ItemCounter";
 import "../styles/CartItem.css"
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 function CartItem({ id, quantity, products, deleteItem }) {
 
@@ -32,6 +33,13 @@ function CartItem({ id, quantity, products, deleteItem }) {
             </button>
         </div>
     );
+}
+
+CartItem.propTypes = {
+    id: PropTypes.number,
+    quantity: PropTypes.number,
+    products: PropTypes.array,
+    deleteItem: PropTypes.func
 }
 
 export default CartItem;

@@ -1,6 +1,5 @@
-import { useContext } from "react";
 import ProductCard from "../components/ProductCard";
-import { CartContext } from "../context/CartContext";
+import PropTypes from "prop-types";
 
 function ProductsGrid({products}) {
     
@@ -22,6 +21,10 @@ function ProductsGrid({products}) {
                 })}
             </div>
     );
+}
+
+ProductsGrid.propTypes = {
+    products: PropTypes.array
 }
 
 export default ProductsGrid;

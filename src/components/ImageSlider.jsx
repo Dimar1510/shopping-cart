@@ -5,6 +5,7 @@ import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import '../styles/ImageSlider.css'
 import MobileStepper from '@mui/material/MobileStepper';
+import PropTypes from "prop-types";
 
 function ImageSlider({productImage}) {
     const images = [productImage, slide1, slide2]
@@ -77,6 +78,10 @@ function ImageSlider({productImage}) {
         </div>
         
     );
+}
+
+ImageSlider.propTypes = {
+    productImage: PropTypes.string
 }
 
 export default ImageSlider;
