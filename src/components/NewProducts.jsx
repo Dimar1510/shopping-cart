@@ -38,7 +38,7 @@ function NewProducts() {
             <Divider/>
             <div className="new-product">
                 <Tooltip title='Click to view the product' placement='top'>
-                    <Link to={`/shop/17`} className='card-link'>
+                    <Link to={`/shop/18`} className='card-link'>
                         <img src={newProduct} alt="Bali bliss" className='new-img'  loading='lazy'/>
                     </Link>
                 </Tooltip>  
