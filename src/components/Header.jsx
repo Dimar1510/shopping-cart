@@ -65,9 +65,9 @@ function Header() {
             <Navbar/>
             <NavLink to={'/cart'} className='nav_link cart-icon'>
                 <ShoppingBagOutlinedIcon  fontSize="large"/>
-                {totalQuantity() > 0 && 
+                {totalQuantity > 0 && 
                     <div className="cart-badge">
-                        {totalQuantity()}
+                        {totalQuantity}
                     </div>
                 }
             </NavLink>

@@ -65,7 +65,7 @@ function CartPage() {
                     </div>
                     <button className="btn-cart_clear" onClick={clearCart}>Remove all items</button>
                     <div className="cart_weight">
-                        Total weight: {(totalQuantity() * ITEMWEIGHT / 1000).toFixed(2) + 'kg'}
+                        Total weight: {(totalQuantity * ITEMWEIGHT / 1000).toFixed(2) + 'kg'}
                     </div>
                     <div className="cart_checkout">
                         <div className="cart_total">

@@ -1,5 +1,5 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import PropTypes from "prop-types";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import PropTypes, { func } from "prop-types";
 
 
 export const CartContext = createContext([]);
@@ -18,10 +18,11 @@ export function CartProvider( {children} ) {
     }, [cart]);
 
     
-    const totalQuantity = () => {
+    const totalQuantity = useMemo(() => {
         const total = cart.reduce((quantity, item) => item.quantity + quantity, 0)
-        return total < 0 ? 0 : total
-    }
+        console.log('cart:' + cart)
+        return total < 0 ? 1 : total
+    }, [cart]) 
 
     function getItemCount(id) {
         return cart.find(item => item.id === id)?.quantity || 0
