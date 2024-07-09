@@ -11,10 +11,6 @@ import { useSelector } from "react-redux";
 function Header() {
   const [sticky, setSticky] = useState({ isSticky: false, offset: 0 });
   const headerRef = useRef(null);
-  const [windowSize, setWindowSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
 
   const handleScroll = (elTopOffset, elHeight) => {
     const root = document.documentElement;
@@ -33,20 +29,11 @@ function Header() {
       handleScroll(header.top, header.height);
     };
 
-    const handleResize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-
     window.addEventListener("scroll", handleScrollEvent);
-    window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("scroll", handleScrollEvent);
-      window.removeEventListener("resize", handleResize);
     };
-  }, [windowSize]);
+  }, []);
 
   const totalQuantity = useSelector(selectTotalQuantity);
 
