@@ -1,35 +1,33 @@
-import { useCart } from "../context/CartContext";
-import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
+import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import ItemCounter from "./ItemCounter";
 import PropTypes from "prop-types";
+import { useActions } from "../app/hooks/useActions";
 
-function CardButton({id}) {
+function CardButton({ id, quantity }) {
+  const { incrementItem } = useActions();
 
-    const {getItemCount, incrementItem} = useCart()
-    const quantity = getItemCount(id)
-    return ( 
-        <div className="card-button">
-            {quantity < 1
-                ?
-                <button 
-                    className="btn-to-cart"
-                    onClick={()=>{
-                        incrementItem(id)
-                    }}
-                >
-                    <ShoppingBagOutlinedIcon/>
-                Add to cart
-                </button>
-                :
-                    <ItemCounter id={id}/>
-                
-            }
-        </div>
-    );
+  return (
+    <div className="card-button">
+      {quantity < 1 ? (
+        <button
+          className="btn-to-cart"
+          onClick={() => {
+            incrementItem(id);
+          }}
+        >
+          <ShoppingBagOutlinedIcon />
+          Add to cart
+        </button>
+      ) : (
+        <ItemCounter id={id} quantity={quantity} />
+      )}
+    </div>
+  );
 }
 
 CardButton.propTypes = {
-    id: PropTypes.number
-}
+  id: PropTypes.number,
+  quantity: PropTypes.number,
+};
 
 export default CardButton;

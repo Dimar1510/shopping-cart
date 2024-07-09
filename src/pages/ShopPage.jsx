@@ -1,92 +1,34 @@
 import { useEffect, useState } from "react";
-import ProductsGrid from "../components/ProductsGrid";
-import useFetch from "../hooks/useFetch";
 import "../styles/ProductsGrid.css";
 import "../styles/ShopPage.css";
-import SortSelect from "../components/SortSelect";
 import { Link } from "react-router-dom";
-import SearchField from "../components/SearchField";
 import Loading from "../components/Loading";
+import { useGetAllProductsQuery } from "../app/services/api";
+import { useInView } from "react-intersection-observer";
+import ProductCard from "../components/ProductCard";
+import { Tooltip } from "@mui/material";
+
+const TOTAL = 20;
 
 function ShopPage() {
-  const [allProducts, setAllProducts] = useState([]);
-  const [products, setProducts] = useState([]);
-  const { data, error, loading } = useFetch();
-
-  const [sort, setSort] = useState("default");
-  const [ascend, setAscend] = useState(true);
-  const [search, setSearch] = useState("");
-
+  const [limit, setLimit] = useState(4);
+  const { data, isFetching, isError } = useGetAllProductsQuery(limit);
   const [random, setRandom] = useState(1);
+  const { ref, inView } = useInView({
+    threshold: 1,
+  });
 
   useEffect(() => {
-    if (data) {
-      setAllProducts(data);
+    if (inView && !isFetching && limit < TOTAL) {
+      setLimit((prev) => prev + 4);
     }
-  }, [data]);
-
-  useEffect(() => {
-    setProducts(allProducts);
-  }, [allProducts]);
-
-  useEffect(() => {
-    handleSort();
-  }, [sort, ascend]);
-
-  useEffect(() => {
-    handleSearch();
-  }, [search]);
-
-  useEffect(() => {
-    document.title = "Shop online | CoffeeShop";
-  }, []);
-
-  useEffect(() => {
-    setRandom(Math.floor(Math.random() * 19) + 1);
-  }, []);
+  }, [inView]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = "Shop online | CoffeeShop";
+    setRandom(Math.floor(Math.random() * TOTAL - 1) + 1);
   }, []);
-
-  function handleSort() {
-    const newProducts = [...products];
-    if (sort === "default") {
-      newProducts.sort((a, b) =>
-        a.id > b.id ? (ascend ? 1 : -1) : ascend ? -1 : 1
-      );
-    }
-    if (sort === "price_low") {
-      newProducts.sort((a, b) =>
-        a.price > b.price ? (ascend ? 1 : -1) : ascend ? -1 : 1
-      );
-    }
-    if (sort === "roast_low") {
-      newProducts.sort((a, b) =>
-        a.roast_level > b.roast_level ? (ascend ? 1 : -1) : ascend ? -1 : 1
-      );
-    }
-    setProducts(newProducts);
-    setAllProducts(newProducts);
-  }
-
-  function handleAscend() {
-    setAscend(!ascend);
-  }
-
-  function handleSearch() {
-    setProducts(
-      allProducts.filter((item) =>
-        item.name.toLowerCase().includes(search.toLowerCase())
-      )
-    );
-  }
-
-  function handleResetFilters() {
-    setAscend(true);
-    setSort("default");
-    setSearch("");
-  }
 
   return (
     <>
@@ -105,42 +47,46 @@ function ShopPage() {
             </Link>
           </div>
         </section>
-        {error && (
+        {isError && (
           <p style={{ textAlign: "center" }}>Api error, check back later</p>
         )}
-        {loading ? (
-          <Loading />
-        ) : (
+        {!data && <Loading />}
+        {data && (
           <>
             <div className="filters-wrapper">
-              <div className="filters-selectors">
-                <SortSelect
-                  handleAscend={handleAscend}
-                  sort={sort}
-                  setSort={setSort}
-                />
-
-                <SearchField setSearch={setSearch} search={search} />
-              </div>
               <div className="products-shown">
-                Products shown: {products.length} / {allProducts.length}
-                <button className="btn-filter" onClick={handleResetFilters}>
-                  Reset to default
-                </button>
+                <Tooltip
+                  placement="top"
+                  title={
+                    data.length === TOTAL
+                      ? "All products are loaded"
+                      : "Scroll down to load the rest"
+                  }
+                >
+                  <span>
+                    Products shown: {data.length} / {TOTAL}
+                  </span>
+                </Tooltip>
               </div>
             </div>
-            <ProductsGrid products={products} />
-            {products.length === 0 && search !== "" && (
-              <p
-                style={{
-                  textAlign: "center",
-                  padding: "2rem",
-                  fontSize: "1.5rem",
-                }}
-              >
-                No search results
-              </p>
-            )}
+            <div className="products">
+              {data.map((item) => {
+                return (
+                  <ProductCard
+                    key={item.id}
+                    name={item.name}
+                    price={item.price}
+                    image={item.image_url}
+                    roast={item.roast_level}
+                    id={item.id}
+                    region={item.region}
+                  />
+                );
+              })}
+              {isFetching && <Loading />}
+            </div>
+
+            <div ref={ref} />
           </>
         )}
       </div>
