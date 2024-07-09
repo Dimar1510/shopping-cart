@@ -9,25 +9,26 @@ import ProductCard from "../components/ProductCard";
 import { Tooltip } from "@mui/material";
 
 const TOTAL = 20;
+const LIMIT = 4;
 
 function ShopPage() {
-  const [limit, setLimit] = useState(4);
+  const [limit, setLimit] = useState(LIMIT);
   const { data, isFetching, isError } = useGetAllProductsQuery(limit);
-  const [random, setRandom] = useState(1);
   const { ref, inView } = useInView({
     threshold: 1,
   });
+  const random = Math.floor(Math.random() * TOTAL - 1) + 1;
 
+  // api sadly doesn't provide page endpoint
   useEffect(() => {
     if (inView && !isFetching && limit < TOTAL) {
       setLimit((prev) => prev + 4);
     }
-  }, [inView]);
+  }, [inView, isFetching]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Shop online | CoffeeShop";
-    setRandom(Math.floor(Math.random() * TOTAL - 1) + 1);
   }, []);
 
   return (
