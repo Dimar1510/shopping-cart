@@ -14,7 +14,7 @@ function Header() {
 
   const handleScroll = (elTopOffset, elHeight) => {
     const root = document.documentElement;
-    if (window.scrollY > elTopOffset + elHeight) {
+    if (window.scrollY > elTopOffset + elHeight + 50) {
       setSticky({ isSticky: true, offset: elHeight });
     } else {
       setSticky({ isSticky: false, offset: 0 });
@@ -38,10 +38,7 @@ function Header() {
   const totalQuantity = useSelector(selectTotalQuantity);
 
   return (
-    <header
-      className={`header${sticky.isSticky ? " sticky" : ""}`}
-      ref={headerRef}
-    >
+    <header className={`header${sticky.isSticky && " sticky"}`} ref={headerRef}>
       <Link className="logo" to={"/"}>
         <img src={logo} alt="logo" className="logo-img" />
         <h1 className="logo-title">CoffeeShop</h1>

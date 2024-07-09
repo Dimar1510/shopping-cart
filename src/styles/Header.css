@@ -1,26 +1,25 @@
 header {
-    display: flex;
-    align-items: center;
-    padding: 1rem 4rem;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    background-color: var(--clr-white);
-    animation: popin 1s forwards;
-    position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 4rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: var(--clr-white);
+  position: relative;
 }
 
 header.sticky {
-    position: fixed;
-    top: 0;;
-    transition: all 0.5s ease;
-    animation: smoothScroll 1s forwards;
-    box-shadow: 0px 15px 15px -5px rgba(0, 0, 0, 0.2);
-    z-index: 10;
+  position: fixed;
+  top: 0;
+  transition: all 0.5s ease;
+  animation: smoothScroll 1s forwards;
+  box-shadow: 0px 15px 15px -5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
 }
 
 @keyframes popin {
   0% {
-    transform: translateY(50px);
+    transform: translateY(250px);
   }
 
   100% {
@@ -29,17 +28,17 @@ header.sticky {
 }
 
 @keyframes smoothScroll {
-    0% {
-      transform: translateY(-142px);
-    }
-  
-    100% {
-      transform: translateY(0px);
-    }
+  0% {
+    transform: translateY(-142px);
   }
 
+  100% {
+    transform: translateY(0px);
+  }
+}
+
 .header_main > a {
-    color: var(--clr-black);
+  color: var(--clr-black);
 }
 
 .logo {
@@ -53,7 +52,6 @@ header.sticky {
 
 .logo:hover {
   animation: pop 1.5s ease-in-out infinite;
-
 }
 
 @keyframes pop {
@@ -74,10 +72,9 @@ header.sticky {
   align-self: center;
 }
 
-
 .cart-icon {
-    position: relative;
-    transition: 0.3s ease-in-out;
+  position: relative;
+  transition: 0.3s ease-in-out;
 }
 
 .cart-icon:hover {
@@ -85,25 +82,26 @@ header.sticky {
 }
 
 .cart-badge {
-    right: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    border: 1px solid var(--clr-black);
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    font-size: 0.8rem;
-    z-index: 2;
-    background-color: var(--clr-black);
-    color: var(--clr-white);
-    font-weight: bold;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  border: 1px solid var(--clr-black);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  z-index: 2;
+  background-color: var(--clr-black);
+  color: var(--clr-white);
+  font-weight: bold;
 }
 
 @media (max-width: 900px) {
-  .logo-text, .logo-title {
+  .logo-text,
+  .logo-title {
     display: none;
   }
 }
