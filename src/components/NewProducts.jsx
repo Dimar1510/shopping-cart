@@ -1,11 +1,15 @@
+import { useSelector } from "react-redux";
 import newProduct from "../assets/images/product_new.png";
 import newProduct2 from "../assets/images/product_new_2.png";
 import CardButton from "../components/CardButton";
 import { Tooltip } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import { Link } from "react-router-dom";
+import { selectItemQuantity } from "../app/cart/cart.slice";
 
 function NewProducts() {
+  const quantityOne = useSelector((state) => selectItemQuantity(state, 17));
+  const quantityTwo = useSelector((state) => selectItemQuantity(state, 18));
   return (
     <section className="home_main-new home-section">
       <h3 className="home-section-title">New Arrivals</h3>
@@ -24,7 +28,7 @@ function NewProducts() {
                 <div className="weight">500g</div>
                 <div className="product-price">$8.99</div>
               </div>
-              <CardButton id={17} />
+              <CardButton id={17} quantity={quantityOne} />
             </div>
           </div>
 
@@ -65,7 +69,7 @@ function NewProducts() {
                 <div className="weight">500g</div>
                 <div className="product-price">$11.99</div>
               </div>
-              <CardButton id={18} />
+              <CardButton id={18} quantity={quantityTwo} />
             </div>
           </div>
         </div>
