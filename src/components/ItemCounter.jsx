@@ -24,10 +24,10 @@ function ItemCounter({ id, quantity }) {
         min={0}
         max={99}
         value={quantity}
-        onInput={(e) => {
+        onChange={(e) => {
           if (e.target.value > 99) return;
           if (e.target.value < 1) deleteItem(id);
-          setItem(id, Number(e.target.value));
+          setItem({ id, count: Number.parseInt(e.target.value) });
         }}
       />
       <button
