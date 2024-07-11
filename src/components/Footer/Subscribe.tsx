@@ -9,10 +9,14 @@ export default function Subscribe() {
             color: "#000000",
             height: "40px",
           },
+
           "& .MuiOutlinedInput-root": {
             "& fieldset": {
               borderRadius: 0,
-              borderColor: "black",
+              borderColor: "#000000",
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: "#000000",
             },
           },
         }}

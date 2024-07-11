@@ -91,9 +91,6 @@
 }
 
 @layer utilities {
-  .link {
-    @apply cursor-pointer text-xs hover:underline;
-  }
   .empty-bean {
     filter: invert(70%) sepia(0%) saturate(1%) hue-rotate(175deg)
       brightness(88%) contrast(88%);
