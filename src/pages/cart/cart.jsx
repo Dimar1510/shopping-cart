@@ -40,7 +40,7 @@ function CartPage() {
 
   if (data)
     return (
-      <div className="w-full flex justify-center">
+      <div className="w-full flex justify-center flex-1">
         <div className="py-8 px-16 w-full max-w-[1200px] self-center relative flex flex-col tablet:px-4">
           {cart.length > 0 ? (
             <>
