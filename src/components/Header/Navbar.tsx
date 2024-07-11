@@ -1,6 +1,7 @@
+import React, { ReactElement } from "react";
 import { NavLink } from "react-router-dom";
 
-const NavItem = ({ link, children }) => {
+const NavItem = ({ link, children }: { link: string; children: string }) => {
   return (
     <NavLink
       className={

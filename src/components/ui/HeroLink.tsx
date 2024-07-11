@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const HeroLink = ({ link, children }) => {
+const HeroLink = ({ link, children }: { link: string; children: string }) => {
   return (
     <Link
       to={link}

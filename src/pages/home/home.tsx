@@ -24,7 +24,7 @@ function HomePage() {
           loop
           id="myVideo"
           playsInline
-          type="video/mp4"
+          itemType="video/mp4"
           className="size-full -z-[1] object-cover object-bottom brightness-50 absolute"
         />
         <div className="m-8 ml-[10%] flex flex-col gap-12 font-header ">

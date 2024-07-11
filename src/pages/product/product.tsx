@@ -35,7 +35,7 @@ function ProductPage() {
   }, [product]);
 
   if (isError)
-    return <p style={{ textAlign: "center" }}>Api error, check back later</p>;
+    return <p className="text-center">Api error, check back later</p>;
   if (isFetching) return <Loading />;
 
   if (product)

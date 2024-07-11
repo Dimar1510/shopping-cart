@@ -3,7 +3,7 @@ import ItemCounter from "./ItemCounter";
 import PropTypes from "prop-types";
 import { useActions } from "../../app/hooks/useActions";
 
-function CardButton({ id, quantity }) {
+function CardButton({ id, quantity }: { id: number; quantity: number }) {
   const { incrementItem } = useActions();
 
   return (

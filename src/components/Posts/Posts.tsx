@@ -3,7 +3,14 @@ import roast from "src/assets/images/roast.jpg";
 import water from "src/assets/images/water.jpg";
 import { Link } from "react-router-dom";
 
-const posts = [
+interface IPost {
+  title: string;
+  text: string;
+  category: string;
+  image: string;
+}
+
+const posts: IPost[] = [
   {
     title: "What is a roast profile",
     text: "The roast level is essentially its color. But profile is a much more complex part of coffee roasting. The profile cannot be distinguished visually, but it affects the taste even more than the degree.",

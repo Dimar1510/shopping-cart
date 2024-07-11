@@ -4,7 +4,7 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import PropTypes from "prop-types";
 import { useActions } from "../../app/hooks/useActions";
 
-function ItemCounter({ id, quantity }) {
+function ItemCounter({ id, quantity }: { id: number; quantity: number }) {
   const { setItem, incrementItem, decrementItem, deleteItem } = useActions();
 
   return (
@@ -25,8 +25,8 @@ function ItemCounter({ id, quantity }) {
         max={99}
         value={quantity}
         onChange={(e) => {
-          if (e.target.value > 99) return;
-          if (e.target.value < 1) deleteItem(id);
+          if (Number.parseInt(e.target.value) > 99) return;
+          if (Number.parseInt(e.target.value) < 1) deleteItem(id);
           setItem({ id, count: Number.parseInt(e.target.value) });
         }}
       />

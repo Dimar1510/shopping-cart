@@ -1,7 +1,13 @@
 import React from "react";
 import CardButton from "../ui/CardButton";
 
-const AddProduct = ({ price, id, quantity }) => {
+interface IProps {
+  price: number;
+  id: number;
+  quantity: number;
+}
+
+const AddProduct: React.FC<IProps> = ({ price, id, quantity }) => {
   return (
     <div className="flex w-full justify-between gap-8 laptop:gap-4 flex-wrap">
       <div className="flex flex-col">

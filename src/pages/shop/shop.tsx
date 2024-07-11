@@ -47,9 +47,7 @@ function ShopPage() {
           </div>
         </div>
       </div>
-      {isError && (
-        <p style={{ textAlign: "center" }}>Api error, check back later</p>
-      )}
+      {isError && <p className="text-center">Api error, check back later</p>}
       {!data && <Loading />}
       {data && (
         <>

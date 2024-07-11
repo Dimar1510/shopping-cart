@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "src/assets/images/logo.svg";
 import { selectTotalQuantity } from "src/app/cart/cart.slice";
-import { useSelector } from "react-redux";
 import { Badge, styled } from "@mui/material";
+import { useAppSelector } from "src/app/hooks";
 
 const StyledBadge = styled(Badge)(() => ({
   "& .MuiBadge-badge": {
@@ -19,8 +19,8 @@ const StyledBadge = styled(Badge)(() => ({
 
 const Header = () => {
   const [sticky, setSticky] = useState({ isSticky: false, offset: 0 });
-  const headerRef = useRef(null);
-  const handleScroll = (elTopOffset, elHeight) => {
+  const headerRef = useRef<HTMLHeadElement>(null);
+  const handleScroll = (elTopOffset: number, elHeight: number) => {
     const root = document.documentElement;
     if (window.scrollY > elTopOffset + elHeight + 50) {
       setSticky({ isSticky: true, offset: elHeight });
@@ -31,9 +31,9 @@ const Header = () => {
   };
 
   useEffect(() => {
-    const header = headerRef.current.getBoundingClientRect();
+    const header = headerRef.current?.getBoundingClientRect();
     const handleScrollEvent = () => {
-      handleScroll(header.top, header.height);
+      header && handleScroll(header.top, header.height);
     };
 
     window.addEventListener("scroll", handleScrollEvent);
@@ -42,7 +42,7 @@ const Header = () => {
     };
   }, []);
 
-  const totalQuantity = useSelector(selectTotalQuantity);
+  const totalQuantity = useAppSelector(selectTotalQuantity);
 
   return (
     <header
