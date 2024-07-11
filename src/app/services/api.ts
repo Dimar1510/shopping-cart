@@ -17,7 +17,7 @@ export const api = createApi({
       }),
     }),
 
-    getProduct: builder.query<IProduct, void>({
+    getProduct: builder.query<IProduct[], number>({
       query: (id) => ({
         url: `/api/${id}`,
         method: "GET",

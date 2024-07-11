@@ -7,6 +7,7 @@ interface RootState {
 const initialState: ICartItem[] =
   // @ts-ignore
   JSON.parse(localStorage.getItem("cart")) || [];
+
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
