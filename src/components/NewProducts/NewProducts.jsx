@@ -24,7 +24,7 @@ function NewProducts() {
               chocolate and smoke.
             </p>
             <div className="self-end">
-              <AddProduct price={11.99} id={18} quantity={quantityTwo} />
+              <AddProduct price={8.99} id={17} quantity={quantityOne} />
             </div>
           </div>
 
