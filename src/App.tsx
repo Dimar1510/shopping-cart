@@ -1,13 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./components/Header/Header.jsx";
-import AboutPage from "./pages/about/about.jsx";
-import CartPage from "./pages/cart/cart.jsx";
-import NotFound from "./pages/notfound/notfound.jsx";
-import ProductPage from "./pages/product/product.jsx";
+import Header from "./components/Header/Header";
+import AboutPage from "./pages/about/about";
+import CartPage from "./pages/cart/cart";
+import NotFound from "./pages/notfound/notfound";
+import ProductPage from "./pages/product/product";
 import "./index.css";
-import HomePage from "./pages/home/home.jsx";
-import Footer from "./components/Footer/Footer.jsx";
-import ShopPage from "./pages/shop/shop.jsx";
+import HomePage from "./pages/home/home";
+import Footer from "./components/Footer/Footer";
+import ShopPage from "./pages/shop/shop";
 
 const App = () => {
   return (

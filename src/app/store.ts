@@ -1,4 +1,9 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import {
+  configureStore,
+  combineReducers,
+  ThunkAction,
+  Action,
+} from "@reduxjs/toolkit";
 import { api } from "./services/api";
 import { cartReducer } from "./cart/cart.slice";
 import {
@@ -37,3 +42,13 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
+export type AppStore = typeof store;
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = AppStore["dispatch"];
+export type AppThunk<ThunkReturnType = void> = ThunkAction<
+  ThunkReturnType,
+  RootState,
+  unknown,
+  Action
+>;

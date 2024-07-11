@@ -1,6 +1,12 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { ICartItem } from "../types";
 
-const initialState = JSON.parse(localStorage.getItem("cart")) || [];
+interface RootState {
+  cart: ICartItem[];
+}
+const initialState: ICartItem[] =
+  // @ts-ignore
+  JSON.parse(localStorage.getItem("cart")) || [];
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -47,7 +53,7 @@ export const cartSlice = createSlice({
         });
       }
     },
-    deleteItem: (state, action) => {
+    deleteItem: (state: ICartItem[], action) => {
       const id = action.payload;
       return state.filter((item) => item.id !== id);
     },
@@ -59,16 +65,16 @@ export const cartSlice = createSlice({
 
 export const cartReducer = cartSlice.reducer;
 export const cartActions = cartSlice.actions;
-export const selectCart = (state) => state.cart;
+export const selectCart = (state: RootState) => state.cart;
 
 export const selectItemQuantity = createSelector(
-  [(state) => state.cart, (state, id) => id],
+  [(state: RootState) => state.cart, (state: RootState, id: number) => id],
   (cart, id) => {
     return cart.find((item) => item.id === id)?.quantity || 0;
   }
 );
 
-export const selectTotalQuantity = (state) => {
+export const selectTotalQuantity = (state: RootState) => {
   const total = state.cart.reduce(
     (quantity, item) => item.quantity + quantity,
     0
