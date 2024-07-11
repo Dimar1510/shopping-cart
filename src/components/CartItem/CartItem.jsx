@@ -1,0 +1,50 @@
+import ItemCounter from "src/components/ui/ItemCounter";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+
+function CartItem({ id, quantity, products, deleteItem }) {
+  const item = products.find((i) => i.id === id);
+  if (item == null || quantity < 1) return null;
+  const totalPrice = (quantity * item.price).toFixed(2);
+  return (
+    <div className="grid gap-x-2 grid-cols-[2fr_auto_100px] grid-rows-2 border-b border-solid border-gray-300 first:border-t py-2 phone:grid-cols-[2fr_auto_50px]">
+      <div className="row-span-2">
+        <Link
+          to={`/shop/${id}`}
+          className="flex items-center gap-2 w-fit group"
+        >
+          <img
+            src={item.image_url}
+            alt={item.name}
+            className="w-[50px] h-[100px] object-cover"
+          />
+          <div className="uppercase text-sm group-hover:underline">
+            {item.name}
+          </div>
+        </Link>{" "}
+      </div>
+      <div className="place-content-end">
+        <ItemCounter id={id} quantity={quantity} />
+      </div>
+      <div className="place-content-end text-center font-medium">
+        ${totalPrice}
+      </div>
+      <div className="place-content-center text-sm">1 pack = ${item.price}</div>
+      <button
+        className="text-sm underline underline-offset-2"
+        onClick={() => deleteItem(id)}
+      >
+        Remove
+      </button>
+    </div>
+  );
+}
+
+CartItem.propTypes = {
+  id: PropTypes.number,
+  quantity: PropTypes.number,
+  products: PropTypes.array,
+  deleteItem: PropTypes.func,
+};
+
+export default CartItem;
