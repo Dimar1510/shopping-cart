@@ -97,13 +97,10 @@ function CartPage() {
             </>
           ) : (
             <>
-              <div className="cart-empty">
-                <SentimentDissatisfiedOutlinedIcon
-                  className="empty-icon"
-                  sx={{ fontSize: 50 }}
-                />
-                <h2 className="empty-title">Your cart is empty</h2>
-                <Link className="shop-link" to={"/shop"}>
+              <div className="flex flex-col items-center gap-8">
+                <SentimentDissatisfiedOutlinedIcon sx={{ fontSize: 50 }} />
+                <h2 className="font-medium">Your cart is empty</h2>
+                <Link className="underline" to={"/shop"}>
                   Shop now
                 </Link>
               </div>
