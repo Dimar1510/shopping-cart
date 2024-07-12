@@ -5,6 +5,9 @@ export default function Subscribe() {
     <div className="flex items-center">
       <TextField
         sx={{
+          "& label.Mui-focused": {
+            color: "#000000",
+          },
           "& .MuiInputLabel-outlined": {
             color: "#000000",
             height: "40px",
