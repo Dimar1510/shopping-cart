@@ -4,9 +4,10 @@ import { ICartItem } from "../types";
 interface RootState {
   cart: ICartItem[];
 }
-const initialState: ICartItem[] =
-  // @ts-ignore
-  JSON.parse(localStorage.getItem("cart")) || [];
+
+const initialState: ICartItem[] = JSON.parse(
+  localStorage.getItem("cart") || "[]"
+);
 
 export const cartSlice = createSlice({
   name: "cart",

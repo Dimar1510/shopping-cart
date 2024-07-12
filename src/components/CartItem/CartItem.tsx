@@ -7,7 +7,7 @@ interface IProps {
   id: number;
   quantity: number;
   products: IProduct[];
-  deleteItem: ActionCreatorWithPayload<any, "cart/deleteItem">;
+  deleteItem: ActionCreatorWithPayload<number, "cart/deleteItem">;
 }
 
 const CartItem: React.FC<IProps> = ({ id, quantity, products, deleteItem }) => {
