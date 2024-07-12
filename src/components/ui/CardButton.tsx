@@ -1,6 +1,5 @@
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import ItemCounter from "./ItemCounter";
-import PropTypes from "prop-types";
 import { useActions } from "../../app/hooks/useActions";
 
 function CardButton({ id, quantity }: { id: number; quantity: number }) {
@@ -24,10 +23,5 @@ function CardButton({ id, quantity }: { id: number; quantity: number }) {
     </div>
   );
 }
-
-CardButton.propTypes = {
-  id: PropTypes.number,
-  quantity: PropTypes.number,
-};
 
 export default CardButton;

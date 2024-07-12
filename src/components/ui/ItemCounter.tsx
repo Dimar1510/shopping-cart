@@ -1,7 +1,6 @@
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-import PropTypes from "prop-types";
 import { useActions } from "../../app/hooks/useActions";
 
 function ItemCounter({ id, quantity }: { id: number; quantity: number }) {
@@ -41,10 +40,4 @@ function ItemCounter({ id, quantity }: { id: number; quantity: number }) {
     </div>
   );
 }
-
-ItemCounter.propTypes = {
-  id: PropTypes.number,
-  quantity: PropTypes.number,
-};
-
 export default ItemCounter;

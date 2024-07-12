@@ -9,7 +9,7 @@ import { selectCart, selectTotalQuantity } from "src/app/cart/cart.slice";
 import { useActions } from "src/app/hooks/useActions";
 
 const MIN = 20;
-const ITEMWEIGHT = 500;
+const WEIGHT = 500;
 
 function CartPage() {
   const { data, isFetching, isError } = useGetAllProductsQuery();
@@ -28,14 +28,15 @@ function CartPage() {
   if (isError) return <p>Api error, check back later</p>;
   if (isFetching) return <Loading />;
 
-  const cartTotalPrice = () => {
+  const cartTotalPrice = (): number => {
+    if (!data) return 0;
     if (data.length === 0) return 0;
     let total = 0;
     cart.map((item) => {
       const product = data.find((i) => i.id === item.id);
-      total += product.price * item.quantity;
+      total = product ? total + product.price * item.quantity : 0;
     });
-    return total.toFixed(2);
+    return total ? Math.round(total * 100) / 100 : 0;
   };
 
   if (data)
@@ -64,13 +65,13 @@ function CartPage() {
               </div>
               <button
                 className="underline w-fit self-end mt-4 hover:font-semibold phone:self-start"
-                onClick={clearCart}
+                onClick={() => clearCart()}
               >
                 Remove all items
               </button>
               <div>
                 Total weight:{" "}
-                {((totalQuantity * ITEMWEIGHT) / 1000).toFixed(2) + "kg"}
+                {((totalQuantity * WEIGHT) / 1000).toFixed(2) + "kg"}
               </div>
               <div className="flex flex-col items-end gap-4 phone:items-start mt-4">
                 <div className="flex items-center gap-6">
@@ -83,7 +84,7 @@ function CartPage() {
 
                 <button
                   className="h-8 rounded-lg bg-none p-5 flex items-center justify-center gap-2 border border-solid border-text-clr transition-colors duration-300 focus:bg-text-clr hover:bg-text-clr hover:text-body-clr focus:text-body-clr whitespace-nowrap"
-                  onClick={() => alert("Chekout")}
+                  onClick={() => alert("Checkout")}
                   disabled={cartTotalPrice() < MIN}
                 >
                   {cartTotalPrice() < MIN

@@ -7,16 +7,18 @@ import ProductSection from "src/components/ProductSection/ProductSection.jsx";
 import ImageSlider from "src/components/ImageSlider/ImageSlider.jsx";
 import Loading from "src/components/Loading";
 import { useGetProductQuery } from "src/app/services/api";
-import { useSelector } from "react-redux";
 import { selectItemQuantity } from "src/app/cart/cart.slice";
 import AddProduct from "../../components/AddProduct/AddProduct";
+import { useAppSelector } from "src/app/hooks";
 
-function ProductPage() {
+const ProductPage = () => {
   const params = useParams();
-  const productId = Number.parseInt(params.productId);
+  const productId = +params;
   const { data, isError, isFetching } = useGetProductQuery(productId);
-  const quantity = useSelector((state) => selectItemQuantity(state, productId));
-  const [roast, setRoast] = useState([]);
+  const quantity = useAppSelector((state) =>
+    selectItemQuantity(state, productId)
+  );
+  const [roast, setRoast] = useState<boolean[]>([]);
   const product = data ? data[0] : undefined;
 
   useEffect(() => {
@@ -71,27 +73,27 @@ function ProductPage() {
                   })}
                 </div>
               </div>
-              <div className="">
+              <>
                 <div className="text-sm text-gray-500">Region</div>
                 {product.region}
-              </div>
+              </>
 
-              <div className="">
+              <>
                 <div className="text-sm text-gray-500">Flavor profile</div>
                 <div className="flex gap-4 flex-wrap">
                   {product.flavor_profile.map((flavor, index) => {
                     return <span key={index}>{flavor}</span>;
                   })}
                 </div>
-              </div>
-              <div className="">
+              </>
+              <>
                 <div className="text-sm text-gray-500">Grind options</div>
                 <div className="flex gap-4 flex-wrap">
                   {product.grind_option.map((grind, index) => {
                     return <span key={index}>{grind}</span>;
                   })}
                 </div>
-              </div>
+              </>
               <div className="self-start">
                 <AddProduct
                   id={productId}
@@ -109,6 +111,6 @@ function ProductPage() {
     <div>
       <NotFound />
     </div>;
-}
+};
 
 export default ProductPage;

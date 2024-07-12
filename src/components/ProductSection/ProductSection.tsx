@@ -2,7 +2,7 @@ import ChairOutlinedIcon from "@mui/icons-material/ChairOutlined";
 import AcUnitOutlinedIcon from "@mui/icons-material/AcUnitOutlined";
 import PropTypes from "prop-types";
 
-function ProductSection({ description }) {
+function ProductSection({ description }: { description: string }) {
   return (
     <section className="p-12 flex flex-col gap-10 laptop:p-4">
       <article>

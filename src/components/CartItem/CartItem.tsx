@@ -1,8 +1,16 @@
 import ItemCounter from "src/components/ui/ItemCounter";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
+import { IProduct } from "src/app/types";
+import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
 
-function CartItem({ id, quantity, products, deleteItem }) {
+interface IProps {
+  id: number;
+  quantity: number;
+  products: IProduct[];
+  deleteItem: ActionCreatorWithPayload<any, "cart/deleteItem">;
+}
+
+const CartItem: React.FC<IProps> = ({ id, quantity, products, deleteItem }) => {
   const item = products.find((i) => i.id === id);
   if (item == null || quantity < 1) return null;
   const totalPrice = (quantity * item.price).toFixed(2);
@@ -38,13 +46,6 @@ function CartItem({ id, quantity, products, deleteItem }) {
       </button>
     </div>
   );
-}
-
-CartItem.propTypes = {
-  id: PropTypes.number,
-  quantity: PropTypes.number,
-  products: PropTypes.array,
-  deleteItem: PropTypes.func,
 };
 
 export default CartItem;

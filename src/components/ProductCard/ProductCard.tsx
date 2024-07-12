@@ -1,14 +1,22 @@
 import bean from "src/assets/images/bean.svg";
 import { Link } from "react-router-dom";
 import Tooltip from "@mui/material/Tooltip";
-import PropTypes from "prop-types";
-import { useSelector } from "react-redux";
 import { selectItemQuantity } from "src/app/cart/cart.slice";
 import AddProduct from "../AddProduct/AddProduct";
+import { useAppSelector } from "src/app/hooks";
+import React from "react";
 
-function ProductCard({ id, name, image, price, roast }) {
-  const quantity = useSelector((state) => selectItemQuantity(state, id));
-  const totalPrice = (quantity * price).toFixed(2);
+interface IProps {
+  id: number;
+  name: string;
+  image: string;
+  price: number;
+  roast: number;
+}
+
+const ProductCard: React.FC<IProps> = ({ id, name, image, price, roast }) => {
+  const quantity = useAppSelector((state) => selectItemQuantity(state, id));
+  const totalPrice = Math.round(quantity * price * 100) / 100;
   const roastLevel = new Array(5).fill(false);
   for (let i = 0; i < roast; i++) {
     roastLevel[i] = true;
@@ -68,14 +76,6 @@ function ProductCard({ id, name, image, price, roast }) {
       </div>
     </div>
   );
-}
-
-ProductCard.propTypes = {
-  id: PropTypes.number,
-  name: PropTypes.string,
-  price: PropTypes.number,
-  roast: PropTypes.number,
-  image: PropTypes.string,
 };
 
 export default ProductCard;

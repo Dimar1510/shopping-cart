@@ -4,17 +4,18 @@ import slide2 from "src/assets/images/slider_2.jpg";
 import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
 import MobileStepper from "@mui/material/MobileStepper";
-import PropTypes from "prop-types";
 
-function ImageSlider({ productImage }) {
+const ImageSlider = ({ productImage }: { productImage: string }) => {
   const images = [productImage, slide1, slide2];
   const [position, setPosition] = useState(0);
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const container = containerRef.current;
-    container.style.width = images.length * 100 + "%";
-    container.style.left = position * -100 + "%";
+    if (container) {
+      container.style.width = images.length * 100 + "%";
+      container.style.left = position * -100 + "%";
+    }
   }, [position]);
 
   function slideRight() {
@@ -81,10 +82,6 @@ function ImageSlider({ productImage }) {
       </div>
     </div>
   );
-}
-
-ImageSlider.propTypes = {
-  productImage: PropTypes.string,
 };
 
 export default ImageSlider;

@@ -10,7 +10,7 @@ export const api = createApi({
   baseQuery: baseQuery,
   refetchOnMountOrArgChange: true,
   endpoints: (builder) => ({
-    getAllProducts: builder.query<IProduct[], void>({
+    getAllProducts: builder.query<IProduct[], number | void>({
       query: (limit) => ({
         url: `/api?limit=${limit}`,
         method: "GET",
