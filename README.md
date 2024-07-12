@@ -1,30 +1,35 @@
-# React + TypeScript + Vite
+# Shopping Cart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### **Description**
 
-Currently, two official plugins are available:
+A mock-up of an e-commerce website that sells coffee beans. The website utilizes an external API for fetching data about products and offers basic cart functional with local storage.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#### 🔗 [Live preview](https://coffeeshop-house.netlify.app)
 
-## Expanding the ESLint configuration
+![Preview](public/coffeeshop.JPG)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### **Features**
 
-- Configure the top-level `parserOptions` property like this:
+- Product cart: add, remove and set quantity of a given product
+- Infinite scrolling: scroll down the shop page to load all products
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+### **Built With**
+
+- React
+- Redux Toolkit
+- React Router
+- TypeScript
+- Tailwind
+- Material UI
+- Vite
+
+#### 🔗 [Fake Coffee API](https://fake-coffee-api.vercel.app)
+
+### Installing and running
+
+```bash
+git clone https://github.com/Dimar1510/shopping-cart.git
+cd shopping-cart
+npm install
+npm run dev
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
