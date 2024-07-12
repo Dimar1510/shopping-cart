@@ -51,7 +51,7 @@ function ShopPage() {
       {!data && <Loading />}
       {data && (
         <>
-          <section className="p-8 tablet:p-2">
+          <section className="p-8 tablet:p-2 w-full">
             <div className="self-start mb-6">
               <Tooltip
                 placement="top"
