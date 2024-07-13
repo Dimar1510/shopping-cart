@@ -10,6 +10,7 @@ import { useGetProductQuery } from "src/app/services/api";
 import { selectItemQuantity } from "src/app/cart/cart.slice";
 import AddProduct from "../../components/AddProduct/AddProduct";
 import { useAppSelector } from "src/app/hooks";
+import { IProduct } from "src/app/types";
 
 const ProductPage = () => {
   const params = useParams();
@@ -19,7 +20,7 @@ const ProductPage = () => {
     selectItemQuantity(state, productId)
   );
   const [roast, setRoast] = useState<boolean[]>([]);
-  const product = data ? data[0] : undefined;
+  const product: IProduct | undefined = data ? data[0] : undefined;
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

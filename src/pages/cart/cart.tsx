@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import CartItem from "src/components/CartItem/CartItem.jsx";
 import { Link } from "react-router-dom";
 import SentimentDissatisfiedOutlinedIcon from "@mui/icons-material/SentimentDissatisfiedOutlined";
@@ -25,20 +25,18 @@ function CartPage() {
     window.scrollTo(0, 0);
   }, []);
 
-  if (isError) return <p>Api error, check back later</p>;
-  if (isFetching) return <Loading />;
-
-  const cartTotalPrice = (): number => {
-    if (!data) return 0;
-    if (data.length === 0) return 0;
+  const cartTotalPrice = useMemo((): number => {
+    if (!data || data.length < 1) return 0;
     let total = 0;
     cart.map((item) => {
       const product = data.find((i) => i.id === item.id);
       total = product ? total + product.price * item.quantity : 0;
     });
     return total ? Math.round(total * 100) / 100 : 0;
-  };
+  }, [data, cart]);
 
+  if (isError) return <p>Api error, check back later</p>;
+  if (isFetching) return <Loading />;
   if (data)
     return (
       <div className="w-full flex justify-center flex-1">
@@ -46,7 +44,7 @@ function CartPage() {
           {cart.length > 0 ? (
             <>
               <h2 className="text-center uppercase pb-8">Your cart</h2>
-              {cartTotalPrice() < MIN && (
+              {cartTotalPrice < MIN && (
                 <div className="pb-4 italic text-red-900 absolute left-[10%] top-14">
                   Minimum order value is $20
                 </div>
@@ -76,7 +74,7 @@ function CartPage() {
               <div className="flex flex-col items-end gap-4 phone:items-start mt-4">
                 <div className="flex items-center gap-6">
                   <div className="uppercase text-sm items-center">Subtotal</div>
-                  <div className="text-3xl">${cartTotalPrice()}</div>
+                  <div className="text-3xl">${cartTotalPrice}</div>
                 </div>
                 <div className="text-sm italic pb-4">
                   Shipping and taxes computed at checkout
@@ -85,10 +83,10 @@ function CartPage() {
                 <button
                   className="h-8 rounded-lg bg-none p-5 flex items-center justify-center gap-2 border border-solid border-text-clr transition-colors duration-300 focus:bg-text-clr hover:bg-text-clr hover:text-body-clr focus:text-body-clr whitespace-nowrap"
                   onClick={() => alert("Checkout")}
-                  disabled={cartTotalPrice() < MIN}
+                  disabled={cartTotalPrice < MIN}
                 >
-                  {cartTotalPrice() < MIN
-                    ? `Add  $${MIN - cartTotalPrice()} worth of items`
+                  {cartTotalPrice < MIN
+                    ? `Add  $${MIN - cartTotalPrice} worth of items`
                     : "Checkout"}
                 </button>
                 <Link className="text-sm underline" to={"/shop"}>
