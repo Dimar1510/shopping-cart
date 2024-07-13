@@ -13,14 +13,13 @@ import { useAppSelector } from "src/app/hooks";
 
 const ProductPage = () => {
   const params = useParams();
-  const productId = +params;
+  const productId = params.productId ? +params.productId : 0;
   const { data, isError, isFetching } = useGetProductQuery(productId);
   const quantity = useAppSelector((state) =>
     selectItemQuantity(state, productId)
   );
   const [roast, setRoast] = useState<boolean[]>([]);
   const product = data ? data[0] : undefined;
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

@@ -69,12 +69,8 @@ export const cartReducer = cartSlice.reducer;
 export const cartActions = cartSlice.actions;
 export const selectCart = (state: RootState) => state.cart;
 
-export const selectItemQuantity = createSelector(
-  [(state: RootState) => state.cart, (state: RootState, id: number) => id],
-  (cart, id) => {
-    return cart.find((item) => item.id === id)?.quantity || 0;
-  }
-);
+export const selectItemQuantity = (state: RootState, id: number) =>
+  state.cart.find((item) => item.id === id)?.quantity || 0;
 
 export const selectTotalQuantity = (state: RootState) => {
   const total = state.cart.reduce(
