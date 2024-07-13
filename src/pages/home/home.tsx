@@ -32,7 +32,7 @@ function HomePage() {
             <div>Hello!</div> <div>We make tasty coffee</div>
           </h2>
           <p className="text-2xl">And then we deliver it right to your door</p>
-          <div>
+          <div className="self-start">
             <HeroLink link={"/shop"}>Shop now</HeroLink>
           </div>
         </div>
