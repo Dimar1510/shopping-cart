@@ -22,6 +22,9 @@ const ProductPage = () => {
   );
   const [roast, setRoast] = useState<boolean[]>([]);
   const product: IProduct | undefined = data ? data[0] : undefined;
+  const totalPrice = product
+    ? Math.round(quantity * product.price * 100) / 100
+    : 0;
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -98,7 +101,7 @@ const ProductPage = () => {
               <div className="self-start">
                 <AddProduct
                   id={productId}
-                  price={product.price}
+                  price={quantity > 1 ? totalPrice : product.price}
                   quantity={quantity}
                 />
               </div>

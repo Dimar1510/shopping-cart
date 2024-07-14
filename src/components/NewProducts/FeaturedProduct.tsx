@@ -19,7 +19,9 @@ const FeaturedProduct = ({
   const quantity = useAppSelector((state) => selectItemQuantity(state, id));
   const { data, isError, isFetching } = useGetProductQuery(id);
   const product: IProduct | undefined = data ? data[0] : undefined;
-
+  const totalPrice = product
+    ? Math.round(quantity * product.price * 100) / 100
+    : 0;
   if (isError)
     return <p className="text-center">Api error, check back later</p>;
   if (isFetching) return <Loading />;
@@ -47,7 +49,11 @@ const FeaturedProduct = ({
           <h4 className="uppercase font-bold text-xl">Bali bliss</h4>
           <p>{product.description}</p>
           <div className="self-start">
-            <AddProduct price={product.price} id={id} quantity={quantity} />
+            <AddProduct
+              price={quantity > 1 ? totalPrice : product.price}
+              id={id}
+              quantity={quantity}
+            />
           </div>
         </div>
       </div>
