@@ -1,4 +1,4 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { ICartItem } from "../types";
 
 interface RootState {

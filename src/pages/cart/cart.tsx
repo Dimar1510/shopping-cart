@@ -4,17 +4,17 @@ import { Link } from "react-router-dom";
 import SentimentDissatisfiedOutlinedIcon from "@mui/icons-material/SentimentDissatisfiedOutlined";
 import Loading from "src/components/Loading";
 import { useGetAllProductsQuery } from "src/app/services/api";
-import { useSelector } from "react-redux";
 import { selectCart, selectTotalQuantity } from "src/app/cart/cart.slice";
 import { useActions } from "src/app/hooks/useActions";
+import { useAppSelector } from "src/app/hooks";
 
 const MIN = 20;
 const WEIGHT = 500;
 
 function CartPage() {
   const { data, isFetching, isError } = useGetAllProductsQuery();
-  const cart = useSelector(selectCart);
-  const totalQuantity = useSelector(selectTotalQuantity);
+  const cart = useAppSelector(selectCart);
+  const totalQuantity = useAppSelector(selectTotalQuantity);
   const { deleteItem, clearCart } = useActions();
 
   useEffect(() => {
