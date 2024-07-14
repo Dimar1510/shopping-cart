@@ -1,13 +1,13 @@
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-import { useActions } from "../../app/hooks/useActions";
+import { useActions } from "../../app/useActions";
 
 function ItemCounter({ id, quantity }: { id: number; quantity: number }) {
   const { setItem, incrementItem, decrementItem, deleteItem } = useActions();
 
   return (
-    <div className="flex justify-between w-full px-2 items-center">
+    <div className="flex justify-between w-full px-2 items-center gap-2 phone:gap-1">
       <button
         className=""
         onClick={() => {
@@ -24,9 +24,12 @@ function ItemCounter({ id, quantity }: { id: number; quantity: number }) {
         max={99}
         value={quantity}
         onChange={(e) => {
-          if (Number.parseInt(e.target.value) > 99) return;
-          if (Number.parseInt(e.target.value) < 1) deleteItem(id);
-          setItem({ id, count: Number.parseInt(e.target.value) });
+          const count = Number.parseInt(e.target.value);
+          if (Number.isInteger(count) && count < 100) {
+            count < 1
+              ? deleteItem(id)
+              : setItem({ id, count: Number.parseInt(e.target.value) });
+          }
         }}
       />
       <button

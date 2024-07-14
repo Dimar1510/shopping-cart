@@ -7,7 +7,7 @@ import ProductSection from "src/components/ProductSection/ProductSection.jsx";
 import ImageSlider from "src/components/ImageSlider/ImageSlider.jsx";
 import Loading from "src/components/Loading";
 import { useGetProductQuery } from "src/app/services/api";
-import { selectItemQuantity } from "src/app/cart/cart.slice";
+import { cartSelectors } from "src/app/cart/cart.slice";
 import AddProduct from "../../components/AddProduct/AddProduct";
 import { useAppSelector } from "src/app/hooks";
 import { IProduct } from "src/app/types";
@@ -16,6 +16,7 @@ const ProductPage = () => {
   const params = useParams();
   const productId = params.productId ? +params.productId : 0;
   const { data, isError, isFetching } = useGetProductQuery(productId);
+  const { selectItemQuantity } = cartSelectors;
   const quantity = useAppSelector((state) =>
     selectItemQuantity(state, productId)
   );

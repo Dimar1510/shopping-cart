@@ -15,7 +15,7 @@ const CartItem: React.FC<IProps> = ({ id, quantity, products, deleteItem }) => {
   if (item == null || quantity < 1) return null;
   const totalPrice = (quantity * item.price).toFixed(2);
   return (
-    <div className="grid gap-x-2 grid-cols-[2fr_auto_100px] grid-rows-2 border-b border-solid border-gray-300 first:border-t py-2 phone:grid-cols-[2fr_auto_50px]">
+    <div className="grid gap-x-2 grid-cols-[2fr_auto_100px] grid-rows-2 border-b border-solid border-gray-300 first:border-t py-2 phone:grid-cols-[2fr_auto_50px] phone:gap-x-0">
       <div className="row-span-2">
         <Link
           to={`/shop/${id}`}

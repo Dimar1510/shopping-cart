@@ -1,6 +1,6 @@
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import ItemCounter from "./ItemCounter";
-import { useActions } from "../../app/hooks/useActions";
+import { useActions } from "../../app/useActions";
 
 function CardButton({ id, quantity }: { id: number; quantity: number }) {
   const { incrementItem } = useActions();

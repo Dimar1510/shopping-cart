@@ -3,7 +3,7 @@ import AddProduct from "../AddProduct/AddProduct";
 import { Tooltip } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "src/app/hooks";
-import { selectItemQuantity } from "src/app/cart/cart.slice";
+import { cartSelectors } from "src/app/cart/cart.slice";
 import { useGetProductQuery } from "src/app/services/api";
 import { IProduct } from "src/app/types";
 import Loading from "../Loading";
@@ -15,6 +15,7 @@ const FeaturedProduct = ({
   id: number;
   right?: boolean;
 }) => {
+  const { selectItemQuantity } = cartSelectors;
   const quantity = useAppSelector((state) => selectItemQuantity(state, id));
   const { data, isError, isFetching } = useGetProductQuery(id);
   const product: IProduct | undefined = data ? data[0] : undefined;

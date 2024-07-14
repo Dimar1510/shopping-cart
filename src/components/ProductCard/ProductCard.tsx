@@ -1,7 +1,7 @@
 import bean from "src/assets/images/bean.svg";
 import { Link } from "react-router-dom";
 import Tooltip from "@mui/material/Tooltip";
-import { selectItemQuantity } from "src/app/cart/cart.slice";
+import { cartSelectors } from "src/app/cart/cart.slice";
 import AddProduct from "../AddProduct/AddProduct";
 import { useAppSelector } from "src/app/hooks";
 import React from "react";
@@ -15,6 +15,7 @@ interface IProps {
 }
 
 const ProductCard: React.FC<IProps> = ({ id, name, image, price, roast }) => {
+  const { selectItemQuantity } = cartSelectors;
   const quantity = useAppSelector((state) => selectItemQuantity(state, id));
   const totalPrice = Math.round(quantity * price * 100) / 100;
   const roastLevel = new Array(5).fill(false);

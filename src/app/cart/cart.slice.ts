@@ -1,9 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { ICartItem } from "../types";
-
-interface RootState {
-  cart: ICartItem[];
-}
 
 const initialState: ICartItem[] = JSON.parse(
   localStorage.getItem("cart") || "[]"
@@ -13,49 +9,49 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    incrementItem: (state, action) => {
+    incrementItem: (state, action: PayloadAction<number>) => {
       const id = action.payload;
       if (state.find((item) => item.id === id) == null) {
-        return [...state, { id, quantity: 1 }];
+        state.push({ id, quantity: 1 });
       } else {
-        return state.map((item) => {
+        state.map((item) => {
           if (item.id === id) {
-            return { ...item, quantity: item.quantity + 1 };
+            item.quantity++;
           } else {
-            return item;
+            item;
           }
         });
       }
     },
-    decrementItem: (state, action) => {
+    decrementItem: (state, action: PayloadAction<number>) => {
       const id = action.payload;
       if (state.find((item) => item.id === id)?.quantity === 1) {
         return state.filter((item) => item.id !== id);
       } else {
-        return state.map((item) => {
+        state.map((item) => {
           if (item.id === id) {
-            return { ...item, quantity: item.quantity - 1 };
+            item.quantity--;
           } else {
-            return item;
+            item;
           }
         });
       }
     },
-    setItem: (state, action) => {
+    setItem: (state, action: PayloadAction<{ id: number; count: number }>) => {
       const { id, count } = action.payload;
       if (state.find((item) => item.id === id) == null) {
-        return [...state, { id, quantity: count }];
+        state.push({ id, quantity: count });
       } else {
-        return state.map((item) => {
+        state.map((item) => {
           if (item.id === id) {
-            return { ...item, quantity: count };
+            item.quantity = count;
           } else {
-            return item;
+            item;
           }
         });
       }
     },
-    deleteItem: (state: ICartItem[], action) => {
+    deleteItem: (state, action: PayloadAction<number>) => {
       const id = action.payload;
       return state.filter((item) => item.id !== id);
     },
@@ -63,19 +59,18 @@ export const cartSlice = createSlice({
       return initialState;
     },
   },
+  selectors: {
+    selectCart: (state) => state,
+    selectItemQuantity: (state, id) => {
+      return state.find((item) => item.id === id)?.quantity || 0;
+    },
+    selectTotalQuantity: (state) => {
+      const total = state.reduce((acc, item) => item.quantity + acc, 0);
+      return total < 0 ? 0 : total;
+    },
+  },
 });
 
 export const cartReducer = cartSlice.reducer;
 export const cartActions = cartSlice.actions;
-export const selectCart = (state: RootState) => state.cart;
-
-export const selectItemQuantity = (state: RootState, id: number) =>
-  state.cart.find((item) => item.id === id)?.quantity || 0;
-
-export const selectTotalQuantity = (state: RootState) => {
-  const total = state.cart.reduce(
-    (quantity, item) => item.quantity + quantity,
-    0
-  );
-  return total < 0 ? 1 : total;
-};
+export const cartSelectors = cartSlice.selectors;

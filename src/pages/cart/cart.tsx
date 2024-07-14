@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import SentimentDissatisfiedOutlinedIcon from "@mui/icons-material/SentimentDissatisfiedOutlined";
 import Loading from "src/components/Loading";
 import { useGetAllProductsQuery } from "src/app/services/api";
-import { selectCart, selectTotalQuantity } from "src/app/cart/cart.slice";
-import { useActions } from "src/app/hooks/useActions";
+// import { selectCart, selectTotalQuantity } from "src/app/cart/cart.slice";
+import { cartSelectors } from "src/app/cart/cart.slice";
+import { useActions } from "src/app/useActions";
 import { useAppSelector } from "src/app/hooks";
 
 const MIN = 20;
@@ -13,6 +14,7 @@ const WEIGHT = 500;
 
 function CartPage() {
   const { data, isFetching, isError } = useGetAllProductsQuery();
+  const { selectCart, selectTotalQuantity } = cartSelectors;
   const cart = useAppSelector(selectCart);
   const totalQuantity = useAppSelector(selectTotalQuantity);
   const { deleteItem, clearCart } = useActions();
@@ -81,8 +83,14 @@ function CartPage() {
                 </div>
 
                 <button
-                  className="h-8 rounded-lg bg-none p-5 flex items-center justify-center gap-2 border border-solid border-text-clr transition-colors duration-300 focus:bg-text-clr hover:bg-text-clr hover:text-body-clr focus:text-body-clr whitespace-nowrap"
-                  onClick={() => alert("Checkout")}
+                  className="h-8 rounded-lg bg-none p-5 flex items-center justify-center gap-2 border border-solid border-text-clr transition-colors duration-300 focus:bg-text-clr hover:bg-text-clr hover:text-body-clr focus:text-body-clr whitespace-nowrap disabled:text-gray-400 disabled:bg-transparent disabled:border-gray-400"
+                  onClick={() =>
+                    alert(
+                      cartTotalPrice < MIN
+                        ? "Sorry can't do that"
+                        : "Checkout  successfully"
+                    )
+                  }
                   disabled={cartTotalPrice < MIN}
                 >
                   {cartTotalPrice < MIN

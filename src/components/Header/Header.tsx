@@ -3,7 +3,7 @@ import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "src/assets/images/logo.svg";
-import { selectTotalQuantity } from "src/app/cart/cart.slice";
+import { cartSelectors } from "src/app/cart/cart.slice";
 import { Badge, styled } from "@mui/material";
 import { useAppSelector } from "src/app/hooks";
 
@@ -42,6 +42,7 @@ const Header = () => {
     };
   }, []);
 
+  const { selectTotalQuantity } = cartSelectors;
   const totalQuantity = useAppSelector(selectTotalQuantity);
 
   return (
