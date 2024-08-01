@@ -5,6 +5,7 @@ import { cartSelectors } from "src/app/cart/cart.slice";
 import AddProduct from "../AddProduct/AddProduct";
 import { useAppSelector } from "src/app/hooks";
 import React from "react";
+import { Card } from "@mui/material";
 
 interface IProps {
   id: number;
@@ -24,7 +25,10 @@ const ProductCard: React.FC<IProps> = ({ id, name, image, price, roast }) => {
   }
 
   return (
-    <div className="min-w-fit rounded-lg flex flex-col p-2 shadow-[1px_1px_15px_0px_rgba(0,0,0,0.2)] transition-shadow hover:shadow-[5px_5px_10px_5px_rgba(0,0,0,0.2)] ">
+    <Card
+      sx={{ boxShadow: 3 }}
+      className="min-w-fit rounded-lg flex flex-col p-2 transition-shadow hover:shadow-[5px_5px_10px_5px_rgba(0,0,0,0.2)] "
+    >
       <div className="uppercase text-xl text-center mt-2 font-medium tracking-tighter track [word-spacing:6px]">
         {name}
       </div>
@@ -75,7 +79,7 @@ const ProductCard: React.FC<IProps> = ({ id, name, image, price, roast }) => {
           price={quantity > 1 ? totalPrice : price}
         />
       </div>
-    </div>
+    </Card>
   );
 };
 
